@@ -21,6 +21,9 @@ from langchain_ollama import OllamaLLM
 from agents.search_agent import SearchAgent
 from agents.analyst_agent import AnalystAgent
 from agents.geo_agent import GeoAgent
+from agents.reflection_agent import ReflectionAgent
+from core.memory_manager import append_entry
+from core.config_loader import get_model
 
 try:
     from agents.redactor_agent import RedactorAgent
@@ -43,15 +46,22 @@ class SupervisorAgent:
     - Comprehensive logging
     """
     
-    def __init__(self, model: str = "magistral:latest"):
+    def __init__(self, model: str = None):
         """
         Initialize SupervisorAgent.
         
         Args:
-            model: Ollama model for synthesis and reasoning
+            model: Ollama model for synthesis and reasoning (overrides config)
         """
-        self.model = model
-        self.llm = OllamaLLM(model=model, base_url="http://127.0.0.1:11434")
+        # Load model from config or use provided model
+        self.model = model if model else get_model("supervisor", "magistral:latest")
+        
+        # Initialize LLM with error handling
+        try:
+            self.llm = OllamaLLM(model=self.model, base_url="http://127.0.0.1:11434")
+        except Exception as e:
+            logging.error(f"Model {self.model} not found. Run: ollama pull {self.model}")
+            raise
         
         # Initialize sub-agents
         try:
@@ -78,11 +88,26 @@ class SupervisorAgent:
             print(f"⚠️  Warning: RedactorAgent initialization failed: {e}")
             self.redactor_agent = None
         
+        try:
+            self.reflection_agent = ReflectionAgent()
+        except Exception as e:
+            print(f"⚠️  Warning: ReflectionAgent initialization failed: {e}")
+            self.reflection_agent = None
+        
         # Setup logging
         self.logger = logging.getLogger("SupervisorAgent")
         self._setup_logging()
         
-        self.logger.info(f"SupervisorAgent initialized with model: {model}")
+        self.logger.info(f"🧠 SupervisorAgent initialized with model: {self.model}")
+        
+        # Log active model configuration
+        try:
+            import yaml
+            with open('config/agents.yaml', 'r') as f:
+                model_config = yaml.safe_load(f)
+            self.logger.info(f"Active model map: {model_config.get('models', {})}")
+        except Exception as e:
+            self.logger.warning(f"Could not load model configuration: {e}")
     
     def _setup_logging(self):
         """Configure logging to file and console."""
@@ -209,7 +234,9 @@ class SupervisorAgent:
         Returns:
             Complete report dictionary
         """
+        import time
         start_time = datetime.utcnow()
+        perf_start = time.time()
         self.logger.info(f"Supervisor received query: {query}")
         print(f"\n{'='*80}")
         print(f"HAWK-AI Supervisor Agent")
@@ -223,9 +250,59 @@ class SupervisorAgent:
         print(f"🕵️  Running {len(agents_to_use)} agent(s) in parallel...\n")
         results = self._execute_agents_parallel(query, agents_to_use)
         
+        # Extract fusion details from AnalystAgent results
+        if "analyst" in results:
+            analyst_result = results["analyst"]
+            if "content" in analyst_result and isinstance(analyst_result["content"], dict):
+                if "structured_context" in analyst_result["content"]:
+                    fusion_info = analyst_result["content"]["structured_context"].get("fusion_stats", {})
+                    results["fusion_ratio"] = fusion_info or {"acled": "N/A", "cia": "N/A"}
+                    self.logger.info(f"Fusion ratio (ACLED/CIA): {results.get('fusion_ratio')}")
+        
+        # Reflection and quality assessment
+        reflection = {}
+        if self.reflection_agent:
+            reflection = self.reflection_agent.evaluate_results(results)
+            self.logger.info(f"Reflection output: {reflection}")
+            
+            confidence = reflection.get("confidence", 1)
+            rerun_agents = reflection.get("rerun", [])
+            
+            if confidence < 0.7 and rerun_agents:
+                self.logger.warning(f"Re-running low-confidence agents: {rerun_agents}")
+                print(f"⚠️  Low confidence ({confidence:.2f}), re-running: {rerun_agents}\n")
+                
+                for agent_name in rerun_agents:
+                    if agent_name == "analyst" and self.analyst_agent:
+                        self.logger.info(f"Re-running analyst agent")
+                        results["analyst"] = self._run_analyst_agent(query)
+                        print(f"✓ Re-run: AnalystAgent completed")
+                    
+                    if agent_name == "geo" and self.geo_agent:
+                        country = self._extract_country_from_query(query)
+                        self.logger.info(f"Re-running geo agent for {country}")
+                        results["geo"] = self._run_geo_agent(country)
+                        print(f"✓ Re-run: GeoAgent completed")
+                    
+                    if agent_name == "search" and self.search_agent:
+                        self.logger.info(f"Re-running search agent")
+                        results["search"] = self._run_search_agent(query)
+                        print(f"✓ Re-run: SearchAgent completed")
+                
+                # Re-evaluate after re-runs
+                reflection = self.reflection_agent.evaluate_results(results)
+                self.logger.info(f"Post-rerun reflection: {reflection}")
+                confidence = reflection.get("confidence", 1)
+            
+            print(f"🧠 Reflection confidence: {confidence:.2f} (no reruns)\n")
+            results["reflection"] = reflection
+        
         # Synthesize results
         print("🧠 Synthesizing results with LLM...\n")
+        synth_start = time.time()
         synthesis = self._synthesize_results(query, results)
+        synth_duration = round(time.time() - synth_start, 2)
+        self.logger.info(f"SupervisorAgent synthesis finished in {synth_duration}s using {self.model}")
         
         # Create final report
         timestamp = start_time.isoformat()
@@ -236,9 +313,24 @@ class SupervisorAgent:
             "query": query,
             "agents": agents_to_use,
             "results": results,
+            "reflection": reflection,
+            "fusion_ratio": results.get("fusion_ratio", {"acled": "N/A", "cia": "N/A"}),
             "summary": synthesis,
             "duration_seconds": round(duration, 2)
         }
+        
+        # Memory integration - log this execution
+        try:
+            append_entry({
+                "query": query,
+                "agents": agents_to_use,
+                "confidence": reflection.get("confidence", 1),
+                "rerun": reflection.get("rerun", []),
+                "summary": reflection.get("summary", "")
+            })
+            self.logger.info("Memory entry logged successfully")
+        except Exception as e:
+            self.logger.error(f"Failed to log memory entry: {e}")
         
         # Save report
         report_path = self._save_report(report)
@@ -247,6 +339,8 @@ class SupervisorAgent:
         print(f"⏱️  Total duration: {duration:.2f}s")
         print(f"{'='*80}\n")
         
+        total_perf_time = round(time.time() - perf_start, 2)
+        self.logger.info(f"SupervisorAgent finished in {total_perf_time}s using {self.model}")
         self.logger.info(f"Report generated: {report_path} ({duration:.2f}s)")
         
         return report
@@ -379,6 +473,7 @@ class SupervisorAgent:
             
             # Create synthesis prompt
             synthesis_prompt = f"""You are an intelligence analyst synthesizing information from multiple sources.
+Note the balance between short-term (ACLED) and structural (CIA_FACTS) data.
 
 Query: {query}
 

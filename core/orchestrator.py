@@ -174,13 +174,7 @@ class Orchestrator:
             supervisor = self.registry.get_agent(AgentType.SUPERVISOR)
             
             if supervisor:
-                result = supervisor.execute(
-                    query=query,
-                    task_type=task_type,
-                    agents=selected_agents,
-                    historical_context=historical_context,
-                    additional_context=context
-                )
+                result = supervisor.run(query=query)
             else:
                 # Fallback to direct execution
                 result = self._direct_execution(query, task_type, historical_context)

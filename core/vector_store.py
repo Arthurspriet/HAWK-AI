@@ -420,6 +420,46 @@ class VectorStore:
         }
 
 
+def query_faiss(query: str, source: Optional[str] = None, top_k: int = 5) -> str:
+    """
+    Query the FAISS vector store with optional source filtering.
+    
+    Args:
+        query: The search query
+        source: Optional source filter ("ACLED" or "CIA_FACTS")
+        top_k: Number of top results to return
+        
+    Returns:
+        Formatted context string with search results
+    """
+    store = VectorStore()
+    
+    # Get more results initially if we need to filter
+    search_k = top_k * 3 if source else top_k
+    results = store.search(query, top_k=search_k)
+    
+    # Filter by source if specified
+    if source:
+        results = [r for r in results if r['metadata'].get('source') == source]
+        results = results[:top_k]  # Trim to requested top_k
+    
+    # Format results into context string
+    context_parts = []
+    for i, result in enumerate(results, 1):
+        metadata = result['metadata']
+        doc = result['document']
+        score = result['score']
+        
+        source_name = metadata.get('source', 'Unknown')
+        country = metadata.get('country', 'N/A')
+        
+        context_parts.append(f"[{i}] Source: {source_name} | Country: {country} | Relevance: {score:.3f}")
+        context_parts.append(f"    {doc[:500]}...")  # Truncate long documents
+        context_parts.append("")
+    
+    return "\n".join(context_parts) if context_parts else "No relevant context found."
+
+
 def main():
     """CLI for vector store management."""
     parser = argparse.ArgumentParser(description="HAWK-AI Vector Store Manager")

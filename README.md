@@ -18,7 +18,9 @@ A fully local, privacy-focused OSINT (Open-Source Intelligence) analysis system 
 - [Quick Start](#-quick-start)
 - [Installation](#-installation)
 - [Usage](#-usage)
-- [Examples](#-examples)
+- [Examples Showcase](#-examples-showcase)
+- [Reasoning Viewer](#-reasoning-viewer)
+- [Individual Examples](#-individual-examples)
 - [Multi-Agent System](#-multi-agent-system)
 - [Configuration](#-configuration)
 - [Data Sources](#-data-sources)
@@ -165,7 +167,78 @@ Shows system status and configuration.
 python main.py --status
 ```
 
-## 💡 Examples
+## 🎬 Examples Showcase
+
+### Run All Capability Demonstrations
+
+HAWK-AI includes a comprehensive showcase demonstrating all agent capabilities:
+
+```bash
+# Run all 7 capability examples
+python examples_showcase.py
+
+# Run specific example (1-7)
+python examples_showcase.py --example 3
+
+# List all available examples
+python examples_showcase.py --list
+```
+
+**The showcase demonstrates:**
+1. 🎯 **Multi-Agent Intelligence Synthesis** - Supervisor coordinating parallel agents
+2. 🔍 **Real-Time Web Intelligence + Historical Context** - Web search + ACLED fusion
+3. 🗺️ **Geospatial Hotspot Analysis** - DBSCAN clustering + interactive maps
+4. 📊 **Temporal Pattern Analysis** - Statistical analysis across 868K+ events
+5. 💻 **Code Execution for Data Analysis** - Sandboxed Python execution
+6. 📝 **Executive Brief Generation** - Professional report creation
+7. 🧠 **Reasoning Chain with Reflection** - Structured analytical reasoning
+
+**Output artifacts:**
+- Interactive hotspot maps in `data/maps/`
+- Reasoning chains in `data/analysis/`
+- Comprehensive session logs in `logs/`
+
+---
+
+## 🧠 Reasoning Viewer
+
+Visualize HAWK-AI's step-by-step reasoning process with the built-in reasoning viewer:
+
+```bash
+# CLI mode (terminal output)
+python tools/reasoning_viewer.py
+
+# Web UI mode (interactive Streamlit dashboard)
+python tools/reasoning_viewer.py --mode streamlit
+
+# View specific reasoning file
+python tools/reasoning_viewer.py --data-path data/analysis/custom_reasoning.json
+```
+
+**The reasoning viewer displays:**
+- 🔍 **Pattern Recognition** - Identified patterns in data
+- 💡 **Hypothesis Formation** - Generated hypotheses
+- ⚖️ **Evaluation** - Evidence-based hypothesis assessment
+- 🔗 **Synthesis** - Integrated analysis
+- ✅ **Review** - Quality assurance and recommendations
+
+**Quick Start:**
+```bash
+# 1. Run an example to generate reasoning data
+python examples_showcase.py --example 7
+
+# 2. View the reasoning chain
+python tools/reasoning_viewer.py
+
+# 3. Or use the web interface
+python tools/reasoning_viewer.py --mode streamlit
+```
+
+See `tools/README.md` for detailed reasoning viewer documentation.
+
+---
+
+## 💡 Individual Examples
 
 ### 🎯 Intelligence Analysis (Supervisor Agent)
 The Supervisor automatically detects intent and coordinates multiple agents:
@@ -341,6 +414,7 @@ python core/vector_store.py --ingest-cia-facts
 All operations are logged to:
 - `logs/session_YYYYMMDD_HHMMSS.jsonl` - Detailed session logs
 - `logs/hawk_ai.log` - Application logs
+- `data/analysis/last_reasoning.json` - Latest reasoning chain output
 
 View session history:
 ```

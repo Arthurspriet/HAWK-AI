@@ -4,11 +4,13 @@ Performs web searches and retrieves online information.
 """
 from typing import Dict, Any, List, Optional
 from datetime import datetime
+import logging
 from rich.console import Console
 
 from core.tools_websearch import get_websearch_tool
 from core.local_tracking import get_tracker
 from core.ollama_client import get_ollama_client
+from core.config_loader import get_model
 
 console = Console()
 
@@ -19,10 +21,20 @@ class SearchAgent:
     def __init__(self, config_path: str = "config/settings.yaml"):
         """Initialize search agent."""
         self.config_path = config_path
+        self.model = get_model("search", "qwen2.5:7b")
         self.search_tool = get_websearch_tool(config_path)
         self.tracker = get_tracker(config_path)
         self.ollama_client = get_ollama_client(config_path)
         
+        # Setup logging
+        self.logger = logging.getLogger("SearchAgent")
+        if not self.logger.handlers:
+            handler = logging.StreamHandler()
+            handler.setFormatter(logging.Formatter('%(levelname)s - %(message)s'))
+            self.logger.addHandler(handler)
+            self.logger.setLevel(logging.INFO)
+        
+        self.logger.info(f"🔎 SearchAgent initialized with model: {self.model}")
         console.print("[green]Search Agent initialized[/green]")
     
     def search_and_report(self, query: str, max_results: int = 5) -> str:
@@ -213,8 +225,12 @@ class SearchAgent:
         Returns:
             Search results with intelligent analysis
         """
+        import time
+        start = time.time()
+        
         try:
             console.print("[cyan]Performing intelligent search...[/cyan]")
+            self.logger.info(f"Starting intelligent search for: {query}")
             
             # Reformulate query for better results
             reformulation_prompt = f"""Given this user query: "{query}"
@@ -240,11 +256,16 @@ Generate 2-3 optimized search queries that would find the most relevant informat
                     seen_urls.add(result['url'])
                     unique_results.append(result)
             
+            duration = round(time.time() - start, 2)
+            self.logger.info(f"🔎 SearchAgent finished in {duration}s using {self.model}")
+            
             # Format and return
             return self._format_search_results(query, unique_results[:10])
             
         except Exception as e:
+            duration = round(time.time() - start, 2)
             console.print(f"[red]Intelligent search error: {e}[/red]")
+            self.logger.error(f"Search failed after {duration}s: {e}")
             # Fallback to regular search
             return self.search_and_report(query)
 

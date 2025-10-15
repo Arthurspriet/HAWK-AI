@@ -20,6 +20,7 @@ from core.tools_geospatial import (
     cluster_events,
     make_hotspot_map
 )
+from core.config_loader import get_model
 
 
 class GeoAgent:
@@ -32,7 +33,7 @@ class GeoAgent:
     
     def __init__(
         self,
-        model: str = "qwen3-embedding:8b",
+        model: str = None,
         base_url: str = "http://127.0.0.1:11434",
         log_file: str = "logs/geo_agent.log"
     ):
@@ -40,12 +41,19 @@ class GeoAgent:
         Initialize the GeoAgent.
         
         Args:
-            model: Ollama model name for spatial reasoning
+            model: Ollama model name for spatial reasoning (overrides config)
             base_url: Base URL for Ollama API
             log_file: Path to log file
         """
-        self.model = model
-        self.llm = OllamaLLM(model=model, base_url=base_url)
+        # Load model from config or use provided model
+        self.model = model if model else get_model("geo", "magistral:latest")
+        
+        # Initialize LLM with error handling
+        try:
+            self.llm = OllamaLLM(model=self.model, base_url=base_url)
+        except Exception as e:
+            logging.error(f"Model {self.model} not found. Run: ollama pull {self.model}")
+            raise
         
         # Setup logging
         self.logger = logging.getLogger("GeoAgent")
@@ -74,7 +82,7 @@ class GeoAgent:
             self.logger.addHandler(file_handler)
             self.logger.addHandler(console_handler)
         
-        self.logger.info(f"GeoAgent initialized with model: {model}")
+        self.logger.info(f"🗺️  GeoAgent initialized with model: {self.model}")
     
     def analyze_country(
         self,
@@ -111,6 +119,8 @@ class GeoAgent:
             ValueError: If no data found for the country
             FileNotFoundError: If ACLED data files are missing
         """
+        import time
+        start = time.time()
         self.logger.info(
             f"Starting analysis for {country} (last {years_back} years)"
         )
@@ -182,7 +192,8 @@ Keep the analysis brief (3-4 sentences) and actionable."""
                 'total_fatalities': total_fatalities
             }
             
-            self.logger.info(f"Analysis complete for {country}")
+            duration = round(time.time() - start, 2)
+            self.logger.info(f"🗺️  GeoAgent finished in {duration}s using {self.model}")
             return result
             
         except FileNotFoundError as e:

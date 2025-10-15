@@ -1,0 +1,76 @@
+[
+  {
+    "query": "Conflict escalation in Sudan",
+    "agents": [
+      "analyst",
+      "geo"
+    ],
+    "confidence": 0.88,
+    "timestamp": "2025-10-15T20:08:41.859497"
+  },
+  {
+    "query": "Analyze humanitarian crisis in Nigeria",
+    "agents": [
+      "analyst",
+      "search"
+    ],
+    "confidence": 0.92,
+    "outputs": "High risk zones identified",
+    "timestamp": "2025-10-15T20:08:58.079936"
+  },
+  {
+    "query": "Track refugee movements",
+    "agents": [
+      "geo",
+      "search"
+    ],
+    "confidence": 0.75,
+    "reflection": "Need more recent data",
+    "timestamp": "2025-10-15T20:08:58.080160"
+  },
+  {
+    "query": "Economic impact assessment",
+    "agents": [
+      "analyst"
+    ],
+    "confidence": 0.81,
+    "timestamp": "2025-10-15T20:08:58.081742"
+  },
+  {
+    "query": "Conflict escalation and hotspots in Sudan 2022\u20132025",
+    "agents": [
+      "geo",
+      "analyst"
+    ],
+    "confidence": 0.75,
+    "rerun": [
+      "analyst"
+    ],
+    "summary": "The geo agent\u2019s summary of 6305 events, 19 clusters, and 44,569 fatalities over a 3\u2011year period aligns with the analyst\u2019s selection of 5 recent battles in 2024\u20112025; no factual contradictions are detected. However, the analyst\u2019s \u2018web_context\u2019 contains unrelated Chinese Q&A pages about pixiv and conflict\u2011of\u2011interest terminology, which are not pertinent to Sudan\u2019s conflict and may indicate noise or a mis\u2011routing of source data. A rerun of the analyst agent is recommended to filter out irrelevant web sources and to provide a more focused set of references supporting the conflict escalation analysis. The geo agent appears complete and accurate for the geographic statistical overview.",
+    "timestamp": "2025-10-15T20:12:26.758267"
+  },
+  {
+    "query": "Conflict escalation and hotspots in Sudan 2022\u20132025",
+    "agents": [
+      "geo",
+      "analyst"
+    ],
+    "confidence": 0.65,
+    "rerun": [
+      "analyst"
+    ],
+    "summary": "The geo agent provides a coherent, detailed statistical overview of Sudan conflict events, including total fatalities, event types, and cluster mapping. The analyst agent correctly lists several recent battles with associated fatalities but fails to provide a comprehensive summary of the overall conflict picture and includes irrelevant web sources, indicating a partial mis\u2011generation. No factual contradictions exist between the two reports, but the analyst output is incomplete and contains unrelated references, warranting a re\u2011run to produce a focused, contextualized summary that aligns with the geo statistics.",
+    "timestamp": "2025-10-15T20:26:40.458673"
+  },
+  {
+    "query": "Conflict escalation and hotspots in Sudan 2022\u20132025",
+    "agents": [
+      "geo",
+      "analyst"
+    ],
+    "confidence": 0.9,
+    "rerun": [],
+    "summary": "The analysis shows that conflict in Sudan has been concentrated in 19 geographic clusters over the last three years, with high intensities of battles, strategic developments, and violence against civilians. The most severe hotspots are likely where fatalities are elevated, indicating active armed engagements and civilian suffering. These patterns threaten regional stability through potential spillover effects (e.g., refugee flows or cross-border conflicts) and humanitarian crises.",
+    "timestamp": "2025-10-15T21:27:56.696095"
+  }
+]

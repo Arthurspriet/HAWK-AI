@@ -4,11 +4,13 @@ Summarizes and reformats text content.
 """
 from typing import Dict, Any, Optional
 from datetime import datetime
+import logging
 from rich.console import Console
 
 from core.tools_redactor import get_redaction_tool
 from core.local_tracking import get_tracker
 from core.ollama_client import get_ollama_client
+from core.config_loader import get_model
 
 console = Console()
 
@@ -19,10 +21,20 @@ class RedactorAgent:
     def __init__(self, config_path: str = "config/settings.yaml"):
         """Initialize redactor agent."""
         self.config_path = config_path
+        self.model = get_model("redactor", "wizardlm-uncensored:13b")
         self.redaction_tool = get_redaction_tool(config_path)
         self.tracker = get_tracker(config_path)
         self.ollama_client = get_ollama_client(config_path)
         
+        # Setup logging
+        self.logger = logging.getLogger("RedactorAgent")
+        if not self.logger.handlers:
+            handler = logging.StreamHandler()
+            handler.setFormatter(logging.Formatter('%(levelname)s - %(message)s'))
+            self.logger.addHandler(handler)
+            self.logger.setLevel(logging.INFO)
+        
+        self.logger.info(f"✍️  RedactorAgent initialized with model: {self.model}")
         console.print("[green]Redactor Agent initialized[/green]")
     
     def create_summary(self, text: str, style: Optional[str] = None) -> str:
@@ -36,11 +48,14 @@ class RedactorAgent:
         Returns:
             Summarized text
         """
+        import time
+        start = time.time()
         start_time = datetime.now()
         self.tracker.log_agent_start("redactor", f"Summarize ({len(text)} chars)")
         
         try:
             console.print(f"[cyan]Creating summary of {len(text)} character text[/cyan]")
+            self.logger.info(f"Creating summary of {len(text)} character text")
             
             # Use LLM for intelligent summarization
             style_instruction = f" in a {style} style" if style else ""
@@ -64,12 +79,16 @@ Summary:"""
             )
             
             duration = (datetime.now() - start_time).total_seconds()
+            perf_duration = round(time.time() - start, 2)
             self.tracker.log_agent_end("redactor", summary, duration)
+            self.logger.info(f"✍️  RedactorAgent finished in {perf_duration}s using {self.model}")
             
             return summary
             
         except Exception as e:
+            perf_duration = round(time.time() - start, 2)
             console.print(f"[red]Redactor error: {e}[/red]")
+            self.logger.error(f"Redaction failed after {perf_duration}s: {e}")
             self.tracker.log_error("redactor", e)
             return f"Error creating summary: {str(e)}"
     

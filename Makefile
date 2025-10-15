@@ -1,4 +1,4 @@
-.PHONY: setup dev db run clean test
+.PHONY: setup dev db run clean test reasoning reasoning-ui examples examples-list
 
 setup:
 	python3 -m venv .venv
@@ -12,6 +12,18 @@ db:
 
 run:
 	. .venv/bin/activate && python main.py
+
+examples:
+	. .venv/bin/activate && python examples_showcase.py
+
+examples-list:
+	. .venv/bin/activate && python examples_showcase.py --list
+
+reasoning:
+	. .venv/bin/activate && python tools/reasoning_viewer.py --mode cli
+
+reasoning-ui:
+	. .venv/bin/activate && python tools/reasoning_viewer.py --mode streamlit
 
 clean:
 	rm -rf .venv

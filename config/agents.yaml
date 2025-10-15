@@ -1,0 +1,17 @@
+models:
+  supervisor: magistral:latest
+  search: qwen2.5:7b
+  analyst: gpt-oss:20b
+  geo: magistral:latest
+  redactor: wizardlm-uncensored:13b
+  reflection: nous-hermes2:34b
+  code: mixtral:8x7b
+  embed_primary: snowflake-arctic-embed2:568m
+  embed_secondary: qwen3-embedding:8b
+
+thinking_modes:
+  factual: "Summarize verified data only. Avoid speculation."
+  analytical: "Identify causes, effects, and underlying motivations."
+  strategic: "Predict scenarios and long-term geopolitical implications."
+  risk: "Assess threat levels, vulnerabilities, and risk exposure."
+
