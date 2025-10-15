@@ -2,17 +2,45 @@
 
 **H**ighly **A**daptive **W**eb **K**nowledge **A**nalysis & **I**ntelligence Agent
 
-A fully local, offline-capable OSINT reasoning agent powered by Ollama models with vectorized historical knowledge (ACLED), web search, code execution, and multi-agent orchestration.
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![LangChain](https://img.shields.io/badge/LangChain-🦜-blue)](https://www.langchain.com/)
+[![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-purple)](https://ollama.ai/)
+
+A fully local, privacy-focused OSINT (Open-Source Intelligence) analysis system powered by Ollama models with vectorized historical knowledge (ACLED), real-time web search, geospatial analysis, code execution, and multi-agent orchestration.
+
+---
+
+## 📑 Table of Contents
+
+- [Features](#-features)
+- [Architecture](#️-architecture)
+- [Quick Start](#-quick-start)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Examples](#-examples)
+- [Multi-Agent System](#-multi-agent-system)
+- [Configuration](#-configuration)
+- [Data Sources](#-data-sources)
+- [Security](#-security)
+- [Use Cases](#-use-cases)
+- [Contributing](#-contributing)
+- [Troubleshooting](#-troubleshooting)
+- [License](#-license)
+
+---
 
 ## 🌟 Features
 
-- **🔍 Web Search**: DuckDuckGo integration for real-time information retrieval
-- **📊 Data Analysis**: Advanced ACLED conflict data analysis with FAISS vector search
-- **💻 Code Execution**: Sandboxed Python code execution
-- **📝 Text Processing**: Intelligent summarization and redaction
-- **🤖 Multi-Agent System**: Specialized agents coordinated by a supervisor
-- **📈 Local Tracking**: LangSmith integration for complete observability
-- **🔒 Fully Local**: Runs entirely offline with local Ollama models
+- **🔍 Web Search**: DuckDuckGo integration with intelligent caching for real-time OSINT gathering
+- **📊 Data Analysis**: Advanced ACLED conflict data analysis with FAISS-powered semantic search (868K+ events)
+- **🗺️ Geospatial Analysis**: DBSCAN clustering and interactive hotspot map generation
+- **💻 Code Execution**: Sandboxed Python code execution for data manipulation and visualization
+- **📝 Text Processing**: Intelligent summarization and executive brief generation
+- **🤖 Multi-Agent System**: 5 specialized agents (Supervisor, Search, Analyst, Geo, CodeExec) working in parallel
+- **🌍 Global Coverage**: 258 country profiles (CIA Factbook) + regional conflict data
+- **📈 Local Tracking**: Comprehensive logging and session management
+- **🔒 Privacy-First**: Runs entirely offline with local Ollama models - your data never leaves your machine
 
 ## 🏗️ Architecture
 
@@ -40,25 +68,51 @@ HAWK-AI/
     └── historical_context/ # ACLED data
 ```
 
+## ⚡ Quick Start
+
+Get HAWK-AI running in 3 steps:
+
+```bash
+# 1. Install dependencies
+make setup
+
+# 2. Build vector database (one-time, ~5-10 minutes)
+make db
+
+# 3. Start analyzing!
+make run
+```
+
 ## 📦 Installation
 
 ### Prerequisites
 
-- Python 3.8+
-- Ollama installed and running at `127.0.0.1:11434`
-- (Optional) NVIDIA GPU for faster vector operations
+- **Python 3.8+**
+- **Ollama** installed and running at `127.0.0.1:11434`
+  ```bash
+  # Install Ollama from https://ollama.ai
+  ollama serve
+  ollama pull magistral:latest  # or your preferred model
+  ollama pull snowflake-arctic-embed2:568m  # for embeddings
+  ```
+- **(Optional)** NVIDIA GPU for faster vector operations
 
-### Setup
+### Detailed Setup
 
 ```bash
 # Clone the repository
+git clone <your-repo-url>
 cd HAWK-AI
 
 # Create virtual environment and install dependencies
 make setup
 
 # Build vector database from ACLED data
+# This indexes 868K+ conflict events and 258 country profiles
 make db
+
+# Validate installation
+python validate_setup.py
 
 # Run HAWK-AI
 make run
@@ -113,62 +167,105 @@ python main.py --status
 
 ## 💡 Examples
 
-### Web Search
-```
-> Search for recent developments in Niger
-```
+### 🎯 Intelligence Analysis (Supervisor Agent)
+The Supervisor automatically detects intent and coordinates multiple agents:
 
-### Historical Analysis
+```bash
+python main.py "Conflict escalation and hotspots in Sudan 2022-2025"
 ```
-> Analyze conflict escalation patterns in the Sahel region
+**What happens**: Supervisor detects geographic + analytical query → Runs GeoAgent (generates map) + AnalystAgent (historical analysis) in parallel → Synthesizes comprehensive intelligence brief
+
+**Output**: 
+- Interactive hotspot map (`data/maps/Sudan_hotspot.html`)
+- Executive summary with temporal patterns
+- Key findings and risk factors
+- Structured JSON report
+
+---
+
+### 🔍 Real-Time Web Intelligence
+```bash
+python main.py "Latest news about conflict in Yemen today"
 ```
+**Agents triggered**: SearchAgent + AnalystAgent  
+**Output**: Current news merged with historical ACLED context
 
-### Data Analysis with Context
+---
+
+### 🗺️ Geospatial Analysis
+```bash
+python agents/geo_agent.py --country Nigeria --years 3
 ```
-> What are the trends in civilian-targeting events in Sudan?
+**Output**: 
+- DBSCAN clustering of conflict events
+- Interactive map with color-coded hotspots
+- Cluster statistics and spatial summary
+
+---
+
+### 📊 Temporal Pattern Analysis
+```bash
+python main.py "Analyze escalation trends in the Sahel region"
 ```
+**Agents triggered**: AnalystAgent  
+**Output**: Statistical analysis of temporal patterns from 868K+ conflict events
 
-### Code Execution
+---
+
+### 💻 Data Manipulation
+```bash
+python main.py "Execute code to analyze top 10 countries by conflict events"
 ```
-> Execute this code:
-```python
-import pandas as pd
-data = pd.DataFrame({'country': ['Sudan', 'Niger'], 'events': [150, 89]})
-print(data.describe())
-```
-```
+**Agents triggered**: CodeExec + Analyst  
+**Output**: Code execution results with data analysis
 
-### Summarization
-```
-> Create an executive brief on Middle East tensions based on recent data
-```
+## 🧩 Multi-Agent System
 
-## 🧩 Agent System
+HAWK-AI uses a sophisticated multi-agent architecture where specialized agents work in parallel, coordinated by a central supervisor.
 
-### Supervisor Agent
-Orchestrates task execution and coordinates specialized agents based on query requirements.
+### 🎯 Supervisor Agent
+The central orchestration layer that:
+- **Semantic Intent Detection**: Automatically routes queries to appropriate agents
+- **Parallel Execution**: Runs multiple agents simultaneously using ThreadPoolExecutor
+- **Synthesis**: Combines multi-agent outputs into cohesive intelligence briefs
+- **Report Export**: Saves structured JSON reports to `data/analysis/`
 
-### Search Agent
-- Performs web searches via DuckDuckGo
-- Retrieves news articles
-- Scrapes and analyzes web content
+**Example**: Query "Conflict escalation and hotspots in Sudan" triggers both GeoAgent + AnalystAgent in parallel.
 
-### Analyst Agent
-- Analyzes ACLED conflict data
-- Detects temporal and geographic patterns
-- Identifies escalation trends
-- Generates statistical reports
+### 🔍 Search Agent
+Real-time web intelligence gathering:
+- DuckDuckGo integration with intelligent query reformulation
+- Local caching system for repeated queries (`data/web_cache/`)
+- FAISS vectorization of search results for semantic ranking
+- Content deduplication and relevance scoring
 
-### Redactor Agent
-- Creates summaries and executive briefs
-- Extracts key points
-- Formats professional reports
-- Redacts sensitive information
+### 📊 Analyst Agent
+Historical context + web fusion analysis:
+- Retrieves relevant ACLED data via FAISS semantic search
+- Merges historical intelligence with current web context
+- LLM-powered analytical reasoning with temporal/political nuance
+- Generates executive summaries with key findings and implications
 
-### Code Execution Agent
-- Safely executes Python code in sandbox
-- Validates code before execution
-- Returns formatted results
+### 🗺️ Geo Agent
+Geospatial analysis and hotspot detection:
+- ACLED data loading and country/time filtering
+- DBSCAN clustering algorithm for geographic hotspot identification
+- Interactive Folium maps with color-coded event markers
+- Spatial reasoning and regional analysis via LLM
+
+### 💻 Code Execution Agent
+Sandboxed computational analysis:
+- Safely executes Python code in isolated subprocess
+- Whitelist-based import restrictions (pandas, numpy, matplotlib, etc.)
+- Network isolation and timeout enforcement (30s default)
+- Output validation and formatting
+
+### 📝 Redactor Agent
+Professional report generation:
+- Executive brief creation
+- Intelligent summarization and key point extraction
+- Sensitive information redaction
+- Multi-format output support
 
 ## 🔧 Configuration
 
@@ -280,12 +377,27 @@ make clean
 
 ## 🎯 Use Cases
 
-- **OSINT Analysis**: Analyze open-source intelligence data
-- **Conflict Research**: Study patterns in conflict data
-- **News Monitoring**: Track and analyze current events
-- **Report Generation**: Create professional analytical reports
-- **Data Exploration**: Query and visualize historical datasets
-- **Academic Research**: Analyze sociopolitical patterns
+### 🔬 Research & Analysis
+- **Conflict Research**: Study temporal and spatial patterns in 868K+ conflict events
+- **Academic Research**: Analyze sociopolitical trends with historical context
+- **Policy Analysis**: Generate evidence-based intelligence briefs
+- **Threat Assessment**: Identify escalation patterns and emerging hotspots
+
+### 📰 Intelligence Gathering
+- **OSINT Analysis**: Combine web intelligence with historical data
+- **News Monitoring**: Track current events with automated contextual analysis
+- **Geopolitical Analysis**: Multi-source intelligence fusion for regional assessments
+
+### 📊 Data Operations
+- **Data Exploration**: Semantic search across 868K+ events + 258 country profiles
+- **Report Generation**: Automated executive summaries and professional briefs
+- **Visualization**: Interactive maps and statistical analysis
+- **Code Execution**: Custom data analysis with sandboxed Python
+
+### 🛡️ Security & Humanitarian
+- **Humanitarian Planning**: Identify high-risk areas and emerging crises
+- **Risk Assessment**: Analyze conflict dynamics and civilian impact
+- **Early Warning**: Detect escalation patterns and geographic hotspots
 
 ## 📋 Requirements
 
@@ -302,15 +414,50 @@ See `requirements.txt` for full dependencies:
 
 ## 🤝 Contributing
 
-This is a local research tool. Feel free to:
-- Add new agent types
-- Integrate additional data sources
-- Enhance analysis capabilities
-- Improve security features
+Contributions are welcome! Here's how you can help:
+
+### Adding New Agents
+Create a new agent in `agents/` that inherits from the base agent pattern:
+```python
+# agents/your_agent.py
+from langchain_ollama import OllamaLLM
+class YourAgent:
+    def __init__(self, model="magistral:latest"):
+        self.llm = OllamaLLM(model=model, base_url="http://127.0.0.1:11434")
+```
+
+### Adding Data Sources
+1. Place data files in `historical_context/YOUR_SOURCE/`
+2. Update `config/sources.yaml`
+3. Add ingestion logic to `core/vector_store.py`
+4. Rebuild index: `make db`
+
+### Improving Agents
+- Enhance analysis algorithms
+- Add new tools and capabilities
+- Improve error handling
+- Optimize performance
+
+### Testing
+```bash
+# Run existing tests
+make test
+
+# Add your tests to tests/
+python tests/run_all_tests.py
+```
+
+**Please ensure**:
+- Code follows existing patterns
+- Security measures are maintained
+- Documentation is updated
+- Changes are tested
 
 ## 📄 License
 
-This project is for research and educational purposes.
+This project is for research and educational purposes. See [LICENSE](LICENSE) for details.
+
+**Important**: ACLED data is subject to [ACLED Terms of Use](https://acleddata.com/terms-of-use/). If you use HAWK-AI for research, please cite ACLED appropriately.
 
 ## 🙏 Acknowledgments
 
@@ -346,15 +493,61 @@ make clean
 make setup
 ```
 
-## 📞 Support
+## 📞 Getting Help
 
-For issues and questions:
-1. Check logs in `logs/`
-2. Use `--dev` mode to debug
-3. Verify Ollama model availability
-4. Check configuration in `config/settings.yaml`
+### Debugging Steps
+1. **Check logs**: `tail -f logs/hawk_ai.log`
+2. **Validate setup**: `python validate_setup.py`
+3. **Verify Ollama**: 
+   ```bash
+   ollama list  # Check available models
+   ollama serve  # Ensure Ollama is running
+   ```
+4. **Check configuration**: Review `config/settings.yaml`
+5. **Use dev mode**: `python main.py --dev`
+
+### Common Issues
+
+**"No module named 'faiss'"**
+```bash
+source .venv/bin/activate  # Activate virtual environment
+pip install -r requirements.txt  # Reinstall dependencies
+```
+
+**"Connection refused" (Ollama)**
+```bash
+# Start Ollama service
+ollama serve
+
+# Verify it's running
+curl http://127.0.0.1:11434/api/tags
+```
+
+**"Vector index not found"**
+```bash
+# Rebuild vector database
+make db
+```
+
+### Performance Tips
+- Use GPU acceleration: Set `use_gpu: true` in `config/settings.yaml` (requires NVIDIA GPU)
+- Smaller models for faster inference: `qwen:7b`, `mistral:7b`
+- Larger models for better quality: `magistral:latest`, `llama3:70b`
+
+### Need More Help?
+- 📖 Check `tests/README.md` for testing documentation
+- 🐛 Report issues on GitHub
+- 💬 Review logs in `logs/` directory for detailed error messages
+
+---
+
+## ⭐ Show Your Support
+
+If you find HAWK-AI useful, please give it a star! ⭐
 
 ---
 
 **Built with 🦅 for local, private, and powerful OSINT analysis**
+
+*Your intelligence, your data, your machine.*
 

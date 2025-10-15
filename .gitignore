@@ -40,12 +40,19 @@ logs/*.jsonl
 logs/*.json
 data/vector_index/*.index
 data/vector_index/*.pkl
+data/vector_index/*.faiss
+data/analysis/*.json
+data/web_cache/*.pkl
+data/maps/*.html
 *.tmp
 
 # Keep directory structure
 !logs/.gitkeep
 !data/vector_index/.gitkeep
 !data/historical_context/.gitkeep
+!data/analysis/.gitkeep
+!data/web_cache/.gitkeep
+!data/maps/.gitkeep
 
 # Jupyter
 .ipynb_checkpoints/
