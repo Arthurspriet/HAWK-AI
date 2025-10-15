@@ -1,4 +1,4 @@
-.PHONY: setup dev db run clean test reasoning reasoning-ui examples examples-list
+.PHONY: setup dev db db-acled db-cia db-wbi run clean test reasoning reasoning-ui examples examples-list
 
 setup:
 	python3 -m venv .venv
@@ -9,6 +9,15 @@ dev:
 
 db:
 	. .venv/bin/activate && python core/vector_store.py --rebuild
+
+db-acled:
+	. .venv/bin/activate && python core/vector_store.py --ingest-acled
+
+db-cia:
+	. .venv/bin/activate && python core/vector_store.py --ingest-cia-facts
+
+db-wbi:
+	. .venv/bin/activate && python core/vector_store.py --ingest-wbi
 
 run:
 	. .venv/bin/activate && python main.py

@@ -7,7 +7,7 @@
 [![LangChain](https://img.shields.io/badge/LangChain-🦜-blue)](https://www.langchain.com/)
 [![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-purple)](https://ollama.ai/)
 
-A fully local, privacy-focused OSINT (Open-Source Intelligence) analysis system powered by Ollama models with vectorized historical knowledge (ACLED), real-time web search, geospatial analysis, code execution, and multi-agent orchestration.
+A fully local, privacy-focused multi-agent OSINT (Open-Source Intelligence) analysis system powered by Ollama models with advanced analytical reasoning, multi-source data fusion, geospatial analysis, code execution, and meta-cognitive reflection capabilities.
 
 ---
 
@@ -18,57 +18,129 @@ A fully local, privacy-focused OSINT (Open-Source Intelligence) analysis system 
 - [Quick Start](#-quick-start)
 - [Installation](#-installation)
 - [Usage](#-usage)
+- [Multi-Agent System](#-multi-agent-system)
+- [Analytical Frameworks](#-analytical-frameworks)
+- [Data Sources & Context Fusion](#-data-sources--context-fusion)
 - [Examples Showcase](#-examples-showcase)
 - [Reasoning Viewer](#-reasoning-viewer)
-- [Individual Examples](#-individual-examples)
-- [Multi-Agent System](#-multi-agent-system)
 - [Configuration](#-configuration)
-- [Data Sources](#-data-sources)
+- [Memory & Collaboration](#-memory--collaboration)
 - [Security](#-security)
 - [Use Cases](#-use-cases)
-- [Contributing](#-contributing)
 - [Troubleshooting](#-troubleshooting)
+- [Contributing](#-contributing)
 - [License](#-license)
 
 ---
 
 ## 🌟 Features
 
-- **🔍 Web Search**: DuckDuckGo integration with intelligent caching for real-time OSINT gathering
-- **📊 Data Analysis**: Advanced ACLED conflict data analysis with FAISS-powered semantic search (868K+ events)
-- **🗺️ Geospatial Analysis**: DBSCAN clustering and interactive hotspot map generation
-- **💻 Code Execution**: Sandboxed Python code execution for data manipulation and visualization
-- **📝 Text Processing**: Intelligent summarization and executive brief generation
-- **🤖 Multi-Agent System**: 5 specialized agents (Supervisor, Search, Analyst, Geo, CodeExec) working in parallel
-- **🌍 Global Coverage**: 258 country profiles (CIA Factbook) + regional conflict data
-- **📈 Local Tracking**: Comprehensive logging and session management
+### Core Intelligence Capabilities
+- **🧠 Multi-Agent Orchestration**: 6 specialized agents (Supervisor, Search, Analyst, Geo, CodeExec, Redactor, Reflection) working in parallel with intelligent coordination
+- **🔍 Real-Time Web Intelligence**: DuckDuckGo integration with intelligent caching and semantic ranking
+- **📊 Multi-Source Data Fusion**: Weighted fusion from 5 data sources (ACLED, CIA Factbook, Freedom World, IMF, World Bank) with reliability-based scoring
+- **🗺️ Geospatial Analysis**: DBSCAN clustering and interactive hotspot map generation with Folium
+- **💻 Sandboxed Code Execution**: Safe Python execution for data manipulation and visualization
+- **🧩 Meta-Cognitive Reflection**: Self-evaluation, consistency checking, and adaptive re-execution
+
+### Advanced Analytical Features
+- **🎯 Structured Reasoning Framework**: Pattern extraction → Hypothesis generation → Evaluation → Synthesis → Critical review
+- **📐 Military Intelligence Frameworks**: PMESII, DIME, and SWOT framework integration
+- **🔗 Context Orchestration**: Automatic detection of relevant data sources and analytical frameworks based on query intent
+- **⚖️ Consistency Analysis**: Cross-validation between structural data (CIA/IMF) and event data (ACLED)
+- **💾 Memory Management**: Persistent inter-agent memory for historical reasoning and collaboration
+- **📈 Confidence Scoring**: Automatic quality assessment with adaptive agent re-runs for low-confidence results
+
+### Data & Scale
+- **🌍 Global Coverage**: 1M+ conflict events (ACLED) + 258 country profiles (CIA) + economic indicators (IMF/WBI) + freedom indices
+- **🔄 Parallel Execution**: ThreadPoolExecutor-based concurrent agent execution
+- **📦 FAISS Vector Search**: GPU-accelerated semantic search across millions of data points
 - **🔒 Privacy-First**: Runs entirely offline with local Ollama models - your data never leaves your machine
+
+---
 
 ## 🏗️ Architecture
 
 ```
 HAWK-AI/
-├── main.py                 # Main entry point
-├── config/                 # Configuration files
-│   ├── settings.yaml      # System settings
-│   └── sources.yaml       # Data sources config
-├── core/                  # Core system components
-│   ├── orchestrator.py    # Task orchestration
-│   ├── agent_registry.py  # Agent management
-│   ├── local_tracking.py  # Logging & tracking
-│   ├── vector_store.py    # FAISS vector database
-│   ├── ollama_client.py   # Ollama model client
-│   └── tools_*.py         # Specialized tools
-├── agents/                # Specialized agents
-│   ├── supervisor_agent.py    # Coordinates all agents
-│   ├── search_agent.py        # Web search operations
-│   ├── analyst_agent.py       # Data analysis
-│   ├── redactor_agent.py      # Text processing
-│   └── codeexec_agent.py      # Code execution
-└── data/                  # Data storage
-    ├── vector_index/      # FAISS indexes
-    └── historical_context/ # ACLED data
+├── main.py                      # Main entry point with CLI/interactive modes
+├── config/
+│   ├── agents.yaml             # Agent model assignments & thinking modes
+│   ├── settings.yaml           # System configuration (Ollama, FAISS, etc.)
+│   └── sources.yaml            # Data source configuration
+├── core/                       # Core system components
+│   ├── orchestrator.py         # Task orchestration & routing
+│   ├── agent_registry.py       # Agent management system
+│   ├── vector_store.py         # FAISS vector database (5 sources)
+│   ├── context_fusion.py       # Multi-source weighted fusion
+│   ├── context_orchestrator.py # Automatic source/framework selection
+│   ├── memory_manager.py       # Persistent inter-agent memory
+│   ├── analytical_frameworks.py # PMESII, DIME, SWOT frameworks
+│   ├── config_loader.py        # Configuration management
+│   └── tools_*.py              # Specialized tool implementations
+├── agents/                     # Specialized agent implementations
+│   ├── supervisor_agent.py     # Central coordinator (parallel execution)
+│   ├── analyst_agent.py        # Structured reasoning & analysis
+│   ├── search_agent.py         # Web intelligence gathering
+│   ├── geo_agent.py            # Geospatial analysis & clustering
+│   ├── codeexec_agent.py       # Sandboxed code execution
+│   ├── redactor_agent.py       # Report generation & summarization
+│   └── reflection_agent.py     # Meta-reasoning & quality control
+├── data/
+│   ├── vector_index/           # FAISS indexes (multi-source)
+│   ├── web_cache/              # Search result caching
+│   ├── analysis/               # Generated reports & reasoning chains
+│   ├── maps/                   # Interactive geospatial maps
+│   └── memory/                 # Agent collaboration memory
+├── historical_context/         # Data sources (5 integrated sources)
+│   ├── ACLED/                  # Conflict event data (1M+ events)
+│   ├── CIA_FACTS/              # 258 country profiles
+│   ├── FREEDOM_WORLD/          # Democracy & freedom indices
+│   ├── IMF/                    # Economic indicators & forecasts
+│   └── WBI/                    # World Bank socio-economic data
+└── tools/                      # Analysis & visualization tools
+    ├── reasoning_viewer.py     # CLI/Streamlit reasoning visualization
+    └── save_reasoning_example.py
 ```
+
+### System Flow
+
+```
+User Query
+    ↓
+Orchestrator (Intent Detection)
+    ↓
+Context Orchestrator (Source/Framework Selection)
+    ↓
+Supervisor Agent (Parallel Coordination)
+    ↓
+┌─────────────────────────────────────────┐
+│  Parallel Agent Execution (ThreadPool)  │
+├─────────────────────────────────────────┤
+│  • SearchAgent → Web Intelligence      │
+│  • AnalystAgent → Multi-source Fusion  │
+│  • GeoAgent → Spatial Analysis         │
+│  • CodeExecAgent → Data Processing     │
+└─────────────────────────────────────────┘
+    ↓
+Context Fusion (Weighted Multi-source Integration)
+    ↓
+Reflection Agent (Quality Assessment & Consistency Check)
+    ↓
+┌─────────────────────────────────┐
+│  If Confidence < 0.7:           │
+│  → Re-run low-confidence agents │
+│  → Re-evaluate                  │
+└─────────────────────────────────┘
+    ↓
+Synthesis & Report Generation
+    ↓
+Memory Manager (Store for future collaboration)
+    ↓
+User Response + Artifacts (maps, reports, reasoning chains)
+```
+
+---
 
 ## ⚡ Quick Start
 
@@ -78,12 +150,14 @@ Get HAWK-AI running in 3 steps:
 # 1. Install dependencies
 make setup
 
-# 2. Build vector database (one-time, ~5-10 minutes)
+# 2. Build vector database (one-time, ~10-15 minutes for all sources)
 make db
 
 # 3. Start analyzing!
 make run
 ```
+
+---
 
 ## 📦 Installation
 
@@ -94,8 +168,17 @@ make run
   ```bash
   # Install Ollama from https://ollama.ai
   ollama serve
-  ollama pull magistral:latest  # or your preferred model
-  ollama pull snowflake-arctic-embed2:568m  # for embeddings
+  
+  # Pull required models (see config/agents.yaml for current models)
+  ollama pull magistral:latest          # Supervisor
+  ollama pull gpt-oss:20b              # Analyst
+  ollama pull qwen2.5:7b               # Search
+  ollama pull mixtral:8x7b             # Code execution
+  ollama pull nous-hermes2:34b         # Reflection
+  ollama pull wizardlm-uncensored:13b  # Redactor
+  
+  # Embedding models
+  ollama pull snowflake-arctic-embed2:568m
   ```
 - **(Optional)** NVIDIA GPU for faster vector operations
 
@@ -109,9 +192,15 @@ cd HAWK-AI
 # Create virtual environment and install dependencies
 make setup
 
-# Build vector database from ACLED data
-# This indexes 868K+ conflict events and 258 country profiles
+# Build vector database from all data sources
+# This indexes: ACLED (1M+ events), CIA (258 countries), 
+#               Freedom World, IMF economic data, World Bank indicators
 make db
+
+# Build individual sources (optional)
+make db-acled      # ACLED conflict data only
+make db-cia        # CIA World Factbook only
+make db-wbi        # World Bank indicators only
 
 # Validate installation
 python validate_setup.py
@@ -120,37 +209,42 @@ python validate_setup.py
 make run
 ```
 
+---
+
 ## 🚀 Usage
 
 ### Interactive Mode (Default)
 
 ```bash
 python main.py --chat
-```
-
-Or simply:
-
-```bash
+# or simply
 python main.py
 ```
 
 This launches an interactive chat interface where you can:
-- Ask questions
-- Request analyses
-- Execute searches
-- Run code
-- Get summaries
+- Ask analytical questions
+- Request multi-agent analyses
+- Execute searches and code
+- Generate executive briefs
+- View reasoning chains
+
+**Available Commands:**
+- `help` - Show available commands
+- `status` - System status and configuration
+- `history` - View session history
+- `clear` - Clear screen
+- `exit/quit` - Exit HAWK-AI
 
 ### Single Query Mode
 
 ```bash
-python main.py "Analyze conflict patterns in Sudan since 2023"
+python main.py "Analyze conflict escalation patterns in Sudan since 2023"
 ```
 
 Save output to file:
 
 ```bash
-python main.py "Search for latest protests in Kenya" -o results.txt
+python main.py "Provide intelligence brief on Yemen situation" -o report.txt
 ```
 
 ### Development Mode
@@ -159,373 +253,843 @@ python main.py "Search for latest protests in Kenya" -o results.txt
 python main.py --dev
 ```
 
-Shows system status and configuration.
+Shows system status, model configuration, and available agents.
 
-### Check System Status
+---
+
+## 🧩 Multi-Agent System
+
+HAWK-AI uses a sophisticated multi-agent architecture with specialized roles and parallel execution.
+
+### 🎯 Supervisor Agent
+
+**Central orchestration layer:**
+- **Semantic Intent Detection**: Automatically routes queries to appropriate agents
+- **Parallel Execution**: Runs multiple agents simultaneously using ThreadPoolExecutor
+- **Context Orchestration**: Selects relevant data sources and analytical frameworks
+- **Synthesis**: Combines multi-agent outputs into cohesive intelligence briefs
+- **Report Export**: Saves structured JSON reports with full reasoning traces
+
+**Example routing:**
+```python
+Query: "Conflict escalation and hotspots in Sudan"
+→ Detects: geographic (map) + analytical (trends) + search (current)
+→ Triggers: GeoAgent + AnalystAgent + SearchAgent (parallel)
+→ Synthesizes: Unified intelligence brief with map + analysis + context
+```
+
+### 📊 Analyst Agent
+
+**Structured analytical reasoning:**
+
+1. **Pattern Extraction**: Identifies actors, causes, and causal relationships
+2. **Hypothesis Generation**: Formulates 2-3 possible explanations
+3. **Hypothesis Evaluation**: Assesses plausibility and evidence
+4. **Synthesis**: Integrates hypotheses with analytical frameworks (PMESII/DIME)
+5. **Critical Review**: Identifies logical gaps and missing variables
+
+**Multi-source fusion:**
+- Retrieves context from ACLED (events), CIA (structure), IMF (economy), Freedom World (governance)
+- Applies weighted scoring based on source reliability
+- Cross-validates structural vs. event data for consistency
+
+**Model**: `gpt-oss:20b` (configurable in `config/agents.yaml`)
+
+### 🔍 Search Agent
+
+**Real-time web intelligence:**
+- DuckDuckGo integration with intelligent query reformulation
+- Local caching system (`data/web_cache/`) with content hashing
+- FAISS vectorization of search results for semantic ranking
+- Content deduplication and relevance scoring
+
+**Model**: `qwen2.5:7b`
+
+### 🗺️ Geo Agent
+
+**Geospatial analysis and hotspot detection:**
+- ACLED data loading with country/time filtering
+- DBSCAN clustering algorithm for geographic hotspot identification
+- Interactive Folium maps with color-coded event markers
+- Cluster statistics and spatial reasoning via LLM
+
+**Outputs**: `data/maps/{Country}_hotspot.html`
+
+**Model**: `magistral:latest`
+
+### 💻 Code Execution Agent
+
+**Sandboxed computational analysis:**
+- Safely executes Python code in isolated subprocess
+- Whitelist-based import restrictions (pandas, numpy, matplotlib, seaborn, sklearn, scipy)
+- Network isolation and timeout enforcement (30s default)
+- Output validation and error handling
+
+**Model**: `mixtral:8x7b`
+
+### 📝 Redactor Agent
+
+**Professional report generation:**
+- Executive brief creation with structured formatting
+- Intelligent summarization and key point extraction
+- Sensitive information redaction capabilities
+- Multi-format output support
+
+**Model**: `wizardlm-uncensored:13b`
+
+### 🧩 Reflection Agent
+
+**Meta-cognitive quality control:**
+- **Coherence Analysis**: Evaluates consistency across agent outputs
+- **Confidence Scoring**: Assigns overall confidence (0-1) to results
+- **Contradiction Detection**: Identifies conflicts in findings
+- **Consistency Check**: Cross-validates structural (CIA/IMF) vs. event (ACLED) data
+- **Adaptive Re-execution**: Recommends re-running agents if confidence < 0.7
+
+**Example reflection output:**
+```json
+{
+  "confidence": 0.88,
+  "contradictions": [],
+  "rerun": [],
+  "consistency_check": {
+    "overall_stability": "Deteriorating",
+    "contradictions": ["Stable governance indicators but increasing unrest events"],
+    "alignment_summary": "Economic decline correlates with rising protests"
+  }
+}
+```
+
+**Model**: `nous-hermes2:34b`
+
+---
+
+## 📐 Analytical Frameworks
+
+HAWK-AI implements military and intelligence analytical frameworks for structured reasoning.
+
+### PMESII Framework
+
+**Political, Military, Economic, Social, Information, Infrastructure**
+
+Used for comprehensive stability assessments:
+
+```python
+# Automatically selected for: conflict, security, instability queries
+Query: "Assess stability in Syria"
+→ Framework: PMESII
+→ Output: Structured analysis across all 6 domains
+```
+
+### DIME Framework
+
+**Diplomatic, Information, Military, Economic**
+
+Used for strategic power analysis:
+
+```python
+# Automatically selected for: economy, finance, diplomacy queries
+Query: "Analyze economic leverage in Ukraine situation"
+→ Framework: DIME
+→ Output: Power dynamics across 4 vectors
+```
+
+### SWOT Framework
+
+**Strengths, Weaknesses, Opportunities, Threats**
+
+Used for risk and scenario forecasting:
+
+```python
+# Automatically selected for: risk, forecast, scenario queries
+Query: "Risk assessment for Horn of Africa region"
+→ Framework: SWOT
+→ Output: Strategic risk matrix
+```
+
+### Context Orchestrator
+
+The `ContextOrchestrator` automatically selects:
+1. **Relevant Data Sources** based on query theme
+2. **Appropriate Framework** based on analytical intent
+
+**Example automatic selection:**
+
+| Query Theme | Data Sources | Framework |
+|------------|-------------|-----------|
+| Conflict/Security | ACLED + CIA_FACTS + FREEDOM_WORLD | PMESII |
+| Economic/Finance | IMF + WBI + CIA_FACTS | DIME |
+| Governance/Democracy | FREEDOM_WORLD + CIA_FACTS + IMF | PMESII |
+| Development/Social | WBI + CIA_FACTS + FREEDOM_WORLD | SWOT |
+
+---
+
+## 📊 Data Sources & Context Fusion
+
+HAWK-AI integrates 5 complementary data sources with intelligent fusion.
+
+### Available Data Sources
+
+#### 1. ACLED (Armed Conflict Location & Event Data)
+- **Coverage**: 1M+ conflict events globally (up to Aug 2025)
+- **Regions**: Africa, Middle East, Asia-Pacific, Europe-Central Asia, Latin America, US-Canada
+- **Data**: Event types, dates, locations, actors, fatalities, detailed notes
+- **Reliability Weight**: 0.5 (event-based, volatile)
+- **Path**: `historical_context/ACLED/`
+
+#### 2. CIA World Factbook
+- **Coverage**: 258 country profiles
+- **Data**: Demographics, government structure, economic indicators, military, geography, resources
+- **Reliability Weight**: 0.6 (structural, long-term)
+- **Path**: `historical_context/CIA_FACTS/`
+
+#### 3. Freedom in the World
+- **Coverage**: Democracy and freedom indices (2013-2025)
+- **Data**: Political rights, civil liberties, freedom scores, regime type
+- **Reliability Weight**: 0.6 (institutional, moderate confidence)
+- **Path**: `historical_context/FREEDOM_WORLD/`
+
+#### 4. IMF World Economic Outlook
+- **Coverage**: Global economic indicators and forecasts
+- **Data**: GDP, inflation, debt, trade balance, fiscal data
+- **Reliability Weight**: 0.75 (high reliability, quantitative)
+- **Path**: `historical_context/IMF/`
+
+#### 5. World Bank Indicators
+- **Coverage**: Socio-economic development indicators
+- **Data**: GDP growth, per capita income, PPP, development metrics
+- **Reliability Weight**: 0.7 (robust, socio-economic fundamentals)
+- **Path**: `historical_context/WBI/`
+
+### Context Fusion Algorithm
+
+The `context_fusion.py` module implements weighted fusion:
+
+```python
+def fuse_contexts(acled_results, cia_results, freedom_results, imf_results, wbi_results):
+    """
+    Weighted fusion with reliability-based scoring:
+    
+    weighted_score = similarity_score × source_reliability_weight
+    
+    Results sorted by weighted_score (descending)
+    """
+```
+
+**Example fusion output:**
+```json
+{
+  "fusion_ratio": {
+    "ACLED": 5,      // 5 ACLED docs retrieved
+    "CIA_FACTS": 3,  // 3 CIA docs retrieved
+    "IMF": 2,        // 2 IMF docs retrieved
+    "FREEDOM_WORLD": 1,
+    "WBI": 1
+  },
+  "top_contexts": [
+    {"text": "...", "source_type": "IMF", "weighted_score": 0.675},
+    {"text": "...", "source_type": "WBI", "weighted_score": 0.56},
+    {"text": "...", "source_type": "ACLED", "weighted_score": 0.4}
+  ]
+}
+```
+
+### Building Vector Indexes
 
 ```bash
-python main.py --status
+# Build all sources at once (~10-15 minutes)
+make db
+
+# Or build individually:
+make db-acled    # ACLED conflict data
+make db-cia      # CIA World Factbook
+make db-wbi      # World Bank indicators
+# IMF and Freedom World indices built with db-acled by default
+
+# Rebuild from scratch
+python core/vector_store.py --rebuild
+
+# Ingest specific source
+python core/vector_store.py --ingest-acled
+python core/vector_store.py --ingest-cia-facts
+python core/vector_store.py --ingest-wbi
+python core/vector_store.py --ingest-imf
+python core/vector_store.py --ingest-freedom-world
 ```
+
+---
 
 ## 🎬 Examples Showcase
 
-### Run All Capability Demonstrations
-
-HAWK-AI includes a comprehensive showcase demonstrating all agent capabilities:
+HAWK-AI includes a comprehensive showcase demonstrating all capabilities:
 
 ```bash
 # Run all 7 capability examples
+make examples
+# or
 python examples_showcase.py
 
 # Run specific example (1-7)
 python examples_showcase.py --example 3
 
 # List all available examples
+make examples-list
+# or
 python examples_showcase.py --list
 ```
 
-**The showcase demonstrates:**
-1. 🎯 **Multi-Agent Intelligence Synthesis** - Supervisor coordinating parallel agents
-2. 🔍 **Real-Time Web Intelligence + Historical Context** - Web search + ACLED fusion
-3. 🗺️ **Geospatial Hotspot Analysis** - DBSCAN clustering + interactive maps
-4. 📊 **Temporal Pattern Analysis** - Statistical analysis across 868K+ events
-5. 💻 **Code Execution for Data Analysis** - Sandboxed Python execution
-6. 📝 **Executive Brief Generation** - Professional report creation
-7. 🧠 **Reasoning Chain with Reflection** - Structured analytical reasoning
+### The 7 Capability Demonstrations
 
-**Output artifacts:**
-- Interactive hotspot maps in `data/maps/`
-- Reasoning chains in `data/analysis/`
-- Comprehensive session logs in `logs/`
+1. **🎯 Multi-Agent Intelligence Synthesis**
+   - Supervisor coordinating GeoAgent + AnalystAgent in parallel
+   - Hotspot map generation + multi-source analytical fusion
+   - Structured JSON report with confidence scoring
+
+2. **🔍 Real-Time Web Intelligence + Historical Context**
+   - SearchAgent web scraping with semantic ranking
+   - AnalystAgent fusion of web results + ACLED + CIA data
+   - Context enrichment and temporal correlation
+
+3. **🗺️ Geospatial Hotspot Analysis**
+   - DBSCAN clustering on 100K+ geographic coordinates
+   - Interactive Folium map with color-coded hotspots
+   - Cluster statistics and spatial reasoning
+
+4. **📊 Temporal Pattern Analysis**
+   - Statistical analysis across 1M+ events
+   - Trend identification and escalation detection
+   - FAISS semantic search with temporal filtering
+
+5. **💻 Code Execution for Data Analysis**
+   - Sandboxed Python execution (pandas, numpy, matplotlib)
+   - Data manipulation and visualization
+   - Network-isolated secure execution
+
+6. **📝 Executive Brief Generation**
+   - Professional report creation with RedactorAgent
+   - Key findings extraction and summarization
+   - Multi-source synthesis into actionable insights
+
+7. **🧠 Reasoning Chain with Reflection**
+   - Structured analytical reasoning (5 steps)
+   - Meta-cognitive quality assessment
+   - Adaptive re-execution for low-confidence results
+
+**Output Artifacts:**
+- Interactive maps: `data/maps/{Country}_hotspot.html`
+- Reasoning chains: `data/analysis/last_reasoning.json`
+- Session logs: `logs/session_*.jsonl`
+- Reports: `data/analysis/report_*.json`
 
 ---
 
 ## 🧠 Reasoning Viewer
 
-Visualize HAWK-AI's step-by-step reasoning process with the built-in reasoning viewer:
+Visualize HAWK-AI's step-by-step reasoning process with the built-in viewer:
 
 ```bash
 # CLI mode (terminal output)
+make reasoning
+# or
 python tools/reasoning_viewer.py
 
 # Web UI mode (interactive Streamlit dashboard)
+make reasoning-ui
+# or
 python tools/reasoning_viewer.py --mode streamlit
 
 # View specific reasoning file
 python tools/reasoning_viewer.py --data-path data/analysis/custom_reasoning.json
 ```
 
-**The reasoning viewer displays:**
-- 🔍 **Pattern Recognition** - Identified patterns in data
-- 💡 **Hypothesis Formation** - Generated hypotheses
-- ⚖️ **Evaluation** - Evidence-based hypothesis assessment
-- 🔗 **Synthesis** - Integrated analysis
-- ✅ **Review** - Quality assurance and recommendations
+### The Reasoning Viewer Displays:
+
+- 🔍 **Pattern Recognition**: Identified actors, causes, and relationships
+- 💡 **Hypothesis Formation**: Generated explanations (2-3 hypotheses)
+- ⚖️ **Evaluation**: Evidence-based hypothesis assessment
+- 🔗 **Synthesis**: Integrated analysis with frameworks (PMESII/DIME)
+- ✅ **Review**: Critical review identifying gaps and recommendations
 
 **Quick Start:**
 ```bash
-# 1. Run an example to generate reasoning data
+# 1. Run example to generate reasoning data
 python examples_showcase.py --example 7
 
-# 2. View the reasoning chain
-python tools/reasoning_viewer.py
+# 2. View reasoning chain
+make reasoning
 
-# 3. Or use the web interface
-python tools/reasoning_viewer.py --mode streamlit
+# 3. Or use web interface
+make reasoning-ui
 ```
 
 See `tools/README.md` for detailed reasoning viewer documentation.
 
 ---
 
-## 💡 Individual Examples
-
-### 🎯 Intelligence Analysis (Supervisor Agent)
-The Supervisor automatically detects intent and coordinates multiple agents:
-
-```bash
-python main.py "Conflict escalation and hotspots in Sudan 2022-2025"
-```
-**What happens**: Supervisor detects geographic + analytical query → Runs GeoAgent (generates map) + AnalystAgent (historical analysis) in parallel → Synthesizes comprehensive intelligence brief
-
-**Output**: 
-- Interactive hotspot map (`data/maps/Sudan_hotspot.html`)
-- Executive summary with temporal patterns
-- Key findings and risk factors
-- Structured JSON report
-
----
-
-### 🔍 Real-Time Web Intelligence
-```bash
-python main.py "Latest news about conflict in Yemen today"
-```
-**Agents triggered**: SearchAgent + AnalystAgent  
-**Output**: Current news merged with historical ACLED context
-
----
-
-### 🗺️ Geospatial Analysis
-```bash
-python agents/geo_agent.py --country Nigeria --years 3
-```
-**Output**: 
-- DBSCAN clustering of conflict events
-- Interactive map with color-coded hotspots
-- Cluster statistics and spatial summary
-
----
-
-### 📊 Temporal Pattern Analysis
-```bash
-python main.py "Analyze escalation trends in the Sahel region"
-```
-**Agents triggered**: AnalystAgent  
-**Output**: Statistical analysis of temporal patterns from 868K+ conflict events
-
----
-
-### 💻 Data Manipulation
-```bash
-python main.py "Execute code to analyze top 10 countries by conflict events"
-```
-**Agents triggered**: CodeExec + Analyst  
-**Output**: Code execution results with data analysis
-
-## 🧩 Multi-Agent System
-
-HAWK-AI uses a sophisticated multi-agent architecture where specialized agents work in parallel, coordinated by a central supervisor.
-
-### 🎯 Supervisor Agent
-The central orchestration layer that:
-- **Semantic Intent Detection**: Automatically routes queries to appropriate agents
-- **Parallel Execution**: Runs multiple agents simultaneously using ThreadPoolExecutor
-- **Synthesis**: Combines multi-agent outputs into cohesive intelligence briefs
-- **Report Export**: Saves structured JSON reports to `data/analysis/`
-
-**Example**: Query "Conflict escalation and hotspots in Sudan" triggers both GeoAgent + AnalystAgent in parallel.
-
-### 🔍 Search Agent
-Real-time web intelligence gathering:
-- DuckDuckGo integration with intelligent query reformulation
-- Local caching system for repeated queries (`data/web_cache/`)
-- FAISS vectorization of search results for semantic ranking
-- Content deduplication and relevance scoring
-
-### 📊 Analyst Agent
-Historical context + web fusion analysis:
-- Retrieves relevant ACLED data via FAISS semantic search
-- Merges historical intelligence with current web context
-- LLM-powered analytical reasoning with temporal/political nuance
-- Generates executive summaries with key findings and implications
-
-### 🗺️ Geo Agent
-Geospatial analysis and hotspot detection:
-- ACLED data loading and country/time filtering
-- DBSCAN clustering algorithm for geographic hotspot identification
-- Interactive Folium maps with color-coded event markers
-- Spatial reasoning and regional analysis via LLM
-
-### 💻 Code Execution Agent
-Sandboxed computational analysis:
-- Safely executes Python code in isolated subprocess
-- Whitelist-based import restrictions (pandas, numpy, matplotlib, etc.)
-- Network isolation and timeout enforcement (30s default)
-- Output validation and formatting
-
-### 📝 Redactor Agent
-Professional report generation:
-- Executive brief creation
-- Intelligent summarization and key point extraction
-- Sensitive information redaction
-- Multi-format output support
-
 ## 🔧 Configuration
 
+### `config/agents.yaml`
+
+Agent model assignments and thinking modes:
+
+```yaml
+models:
+  supervisor: magistral:latest
+  search: qwen2.5:7b
+  analyst: gpt-oss:20b
+  geo: magistral:latest
+  redactor: wizardlm-uncensored:13b
+  reflection: nous-hermes2:34b
+  code: mixtral:8x7b
+  embed_primary: snowflake-arctic-embed2:568m
+  embed_secondary: qwen3-embedding:8b
+
+thinking_modes:
+  factual: "Summarize verified data only. Avoid speculation."
+  analytical: "Identify causes, effects, and underlying motivations."
+  strategic: "Predict scenarios and long-term geopolitical implications."
+  risk: "Assess threat levels, vulnerabilities, and risk exposure."
+```
+
 ### `config/settings.yaml`
+
+System configuration:
 
 ```yaml
 ollama:
   host: "127.0.0.1"
   port: 11434
-  model_default: "gpt-oss:20b"       # Your LLM model
-  embed_model: "snowflake-arctic-embed2:568m"  # Embedding model
+  model_default: "gpt-oss:20b"
+  embed_model: "snowflake-arctic-embed2:568m"
+  timeout: 300
 
 vector_store:
   path: "data/vector_index"
-  use_gpu: true                       # Use GPU for FAISS
+  use_gpu: true          # GPU acceleration for FAISS
+  dimension: 768
+  index_type: "flat"
+  top_k: 5
+
+search:
+  max_results: 5
+  timeout: 10
+
+code_execution:
+  timeout: 30
+  max_output_length: 10000
+  allowed_imports: ["numpy", "pandas", "matplotlib", "seaborn", "sklearn", "scipy"]
 
 tracking:
   langsmith_enabled: true
   project_name: "HAWK-AI-local"
+  log_dir: "logs"
 ```
 
-### Supported Models
+### `config/sources.yaml`
 
-- **LLM**: Any Ollama model (magistral, llama3, mixtral, gpt-oss, etc.)
-- **Embeddings**: snowflake-arctic-embed2, nomic-embed-text, etc.
+Data source configuration:
 
-## 📊 Data Sources
+```yaml
+acled:
+  enabled: true
+  path: "historical_context/ACLED"
+  file_pattern: "*.csv"
 
-### ACLED (Armed Conflict Location & Event Data)
+search_sources:
+  duckduckgo:
+    enabled: true
+    region: "wt-wt"
+    safesearch: "moderate"
+```
 
-Place ACLED CSV files in `historical_context/ACLED/`:
-- Regional datasets (Africa, Middle East, Asia-Pacific, etc.)
-- Event-level data with:
-  - Event types and dates
-  - Geographic information
-  - Actor data
-  - Fatality counts
+---
 
-### CIA World Factbook
+## 💾 Memory & Collaboration
 
-Place CIA World Factbook data in `historical_context/CIA_FACTS/`:
-- Country profiles with comprehensive information
-- Demographics and population data
-- Government and political structure
-- Economic indicators
-- Military and security information
-- Geography and natural resources
-- Supports both JSON and CSV formats
+HAWK-AI implements persistent memory for inter-agent collaboration and historical reasoning.
 
-### Rebuild Vector Index
+### Memory Manager
 
-After adding new data sources:
+Stores and retrieves:
+- Previous queries and results
+- Agent invocations and outputs
+- Confidence scores and reflections
+- Cross-session reasoning history
+
+**Usage:**
+
+```python
+from core.memory_manager import append_entry, get_recent_entries, search_memory
+
+# Store memory entry
+append_entry({
+    "query": "Conflict escalation in Sudan",
+    "agents": ["analyst", "geo"],
+    "confidence": 0.88,
+    "summary": "Analysis completed successfully"
+})
+
+# Retrieve recent entries
+recent = get_recent_entries(count=5)
+
+# Search memory
+results = search_memory(
+    query_text="Sudan",
+    agent_name="analyst",
+    min_confidence=0.7
+)
+```
+
+**CLI Interface:**
 
 ```bash
-make db
+# View recent memory entries
+python core/memory_manager.py --show
+
+# View last 10 entries
+python core/memory_manager.py --show --count 10
+
+# Search memory
+python core/memory_manager.py --search "Sudan"
+python core/memory_manager.py --search-agent analyst
+python core/memory_manager.py --min-confidence 0.8
+
+# Memory statistics
+python core/memory_manager.py --stats
+
+# Clear memory (caution!)
+python core/memory_manager.py --clear
 ```
 
-Or rebuild manually:
+### Collaborative Features
 
-```bash
-# Rebuild all sources
-python core/vector_store.py --rebuild
+1. **Historical Context**: Agents access past analyses for continuity
+2. **Pattern Recognition**: Identify recurring themes across sessions
+3. **Confidence Tracking**: Learn from low-confidence results
+4. **Query Refinement**: Improve future analyses based on history
 
-# Ingest ACLED data only
-python core/vector_store.py --ingest-acled
-
-# Ingest CIA World Factbook data only
-python core/vector_store.py --ingest-cia-facts
-```
+---
 
 ## 📈 Tracking & Logging
 
-All operations are logged to:
-- `logs/session_YYYYMMDD_HHMMSS.jsonl` - Detailed session logs
-- `logs/hawk_ai.log` - Application logs
-- `data/analysis/last_reasoning.json` - Latest reasoning chain output
+Comprehensive logging system for transparency and debugging:
 
-View session history:
-```
+### Log Files
+
+- **`logs/hawk_ai.log`**: Main application logs
+- **`logs/supervisor_agent.log`**: Supervisor coordination logs
+- **`logs/analyst_agent.log`**: Analyst reasoning traces
+- **`logs/geo_agent.log`**: Geospatial analysis logs
+- **`logs/websearch.log`**: Web search operations
+- **`logs/session_YYYYMMDD_HHMMSS.jsonl`**: Detailed session logs (JSONL format)
+
+### Session Tracking
+
+View session history in interactive mode:
+
+```bash
 > history
 ```
 
-## 🛠️ Development
+Outputs:
+- Session ID
+- Total events processed
+- Event types distribution
+- Agents used
+- Performance metrics
 
-### Run Tests
-```bash
-make test
-```
+### Reasoning Artifacts
 
-### Clean Environment
-```bash
-make clean
-```
+- **`data/analysis/last_reasoning.json`**: Latest reasoning chain
+- **`data/analysis/report_*.json`**: Generated intelligence reports
+- **`data/maps/*.html`**: Interactive geospatial maps
 
-### Project Structure
-
-- **Core Modules**: Reusable system components
-- **Agents**: Specialized task executors
-- **Tools**: Domain-specific functionality
-- **Config**: YAML-based configuration
-- **Data**: Vector indexes and source data
+---
 
 ## 🔐 Security
 
-- **Sandboxed Execution**: Code runs in isolated subprocess
-- **Import Whitelisting**: Only approved libraries allowed
-- **No Network in Sandbox**: Code execution is network-isolated
-- **Input Validation**: All code validated before execution
-- **Sensitive Data Redaction**: Automatic PII redaction capability
+HAWK-AI implements multiple security layers:
+
+### Sandboxed Code Execution
+- **Isolated Subprocess**: Code runs in separate process
+- **Import Whitelisting**: Only approved libraries (pandas, numpy, matplotlib, seaborn, sklearn, scipy)
+- **Network Isolation**: No network access from sandbox
+- **Timeout Enforcement**: 30-second execution limit
+- **Output Validation**: All outputs validated before display
+
+### Privacy-First Design
+- **Fully Local**: All processing on your machine
+- **No Cloud Dependencies**: Uses local Ollama models
+- **No Data Transmission**: Your data never leaves your system
+- **Local Caching**: Web search results cached locally
+
+### Input Validation
+- Query sanitization
+- Code validation before execution
+- Path traversal prevention
+- SQL injection protection (for data sources)
+
+---
 
 ## 🎯 Use Cases
 
 ### 🔬 Research & Analysis
-- **Conflict Research**: Study temporal and spatial patterns in 868K+ conflict events
-- **Academic Research**: Analyze sociopolitical trends with historical context
-- **Policy Analysis**: Generate evidence-based intelligence briefs
-- **Threat Assessment**: Identify escalation patterns and emerging hotspots
+- **Conflict Research**: Study patterns in 1M+ conflict events across multiple regions
+- **Academic Research**: Analyze sociopolitical trends with multi-source historical context
+- **Policy Analysis**: Generate evidence-based intelligence briefs with framework analysis
+- **Threat Assessment**: Identify escalation patterns and emerging hotspots with reflection
 
 ### 📰 Intelligence Gathering
-- **OSINT Analysis**: Combine web intelligence with historical data
+- **OSINT Analysis**: Combine web intelligence with 5 historical data sources
 - **News Monitoring**: Track current events with automated contextual analysis
 - **Geopolitical Analysis**: Multi-source intelligence fusion for regional assessments
+- **Strategic Forecasting**: PMESII/DIME framework analysis for scenario planning
 
 ### 📊 Data Operations
-- **Data Exploration**: Semantic search across 868K+ events + 258 country profiles
-- **Report Generation**: Automated executive summaries and professional briefs
+- **Data Exploration**: Semantic search across millions of data points
+- **Report Generation**: Automated executive summaries with multi-agent synthesis
 - **Visualization**: Interactive maps and statistical analysis
 - **Code Execution**: Custom data analysis with sandboxed Python
 
 ### 🛡️ Security & Humanitarian
-- **Humanitarian Planning**: Identify high-risk areas and emerging crises
-- **Risk Assessment**: Analyze conflict dynamics and civilian impact
-- **Early Warning**: Detect escalation patterns and geographic hotspots
+- **Humanitarian Planning**: Identify high-risk areas with geospatial clustering
+- **Risk Assessment**: Analyze conflict dynamics with consistency checking
+- **Early Warning**: Detect escalation patterns with temporal analysis
+- **Stability Assessment**: PMESII framework for comprehensive evaluation
+
+---
 
 ## 📋 Requirements
 
 See `requirements.txt` for full dependencies:
 
+**Core Dependencies:**
 - `crewai[tools]` - Agent framework
 - `langgraph` - Agent orchestration
 - `langchain-ollama` - Ollama integration
-- `faiss-gpu-cu12` - Vector database
-- `sentence-transformers` - Embeddings
+- `faiss-gpu-cu12` - GPU-accelerated vector database
+- `sentence-transformers` - Embedding generation
 - `duckduckgo-search` - Web search
 - `pandas`, `numpy` - Data processing
+- `folium` - Interactive map generation
+- `scikit-learn` - Clustering algorithms (DBSCAN)
 - `rich` - Terminal UI
+- `pyyaml` - Configuration management
+- `tqdm` - Progress bars
+
+**Optional:**
+- `streamlit` - Web UI for reasoning viewer
+- `plotly` - Interactive visualizations
+
+---
 
 ## 🤝 Contributing
 
 Contributions are welcome! Here's how you can help:
 
 ### Adding New Agents
-Create a new agent in `agents/` that inherits from the base agent pattern:
+
+Create a new agent in `agents/` following the existing pattern:
+
 ```python
 # agents/your_agent.py
 from langchain_ollama import OllamaLLM
+from core.config_loader import get_model
+
 class YourAgent:
-    def __init__(self, model="magistral:latest"):
-        self.llm = OllamaLLM(model=model, base_url="http://127.0.0.1:11434")
+    def __init__(self, model: str = None):
+        self.model = model if model else get_model("your_agent", "default-model:latest")
+        self.llm = OllamaLLM(model=self.model, base_url="http://127.0.0.1:11434")
+    
+    def execute(self, query: str):
+        # Agent logic here
+        pass
+```
+
+Register in `config/agents.yaml`:
+```yaml
+models:
+  your_agent: your-model:latest
 ```
 
 ### Adding Data Sources
+
 1. Place data files in `historical_context/YOUR_SOURCE/`
 2. Update `config/sources.yaml`
-3. Add ingestion logic to `core/vector_store.py`
+3. Add ingestion method to `core/vector_store.py`:
+
+```python
+def ingest_your_source_data(self, source_path: Optional[str] = None):
+    """Ingest YOUR_SOURCE data into vector store."""
+    # Implement data loading and embedding
+    pass
+```
+
 4. Rebuild index: `make db`
 
-### Improving Agents
-- Enhance analysis algorithms
-- Add new tools and capabilities
-- Improve error handling
-- Optimize performance
+### Adding Analytical Frameworks
+
+Add framework to `core/analytical_frameworks.py`:
+
+```python
+def apply_your_framework(context: str) -> str:
+    """Apply YOUR_FRAMEWORK for analysis."""
+    template = f"""
+    Framework prompt template here
+    Context: {context}
+    """
+    return template
+```
+
+Update `core/context_orchestrator.py` for automatic selection.
 
 ### Testing
+
 ```bash
 # Run existing tests
 make test
 
-# Add your tests to tests/
+# Add tests to tests/
 python tests/run_all_tests.py
 ```
 
-**Please ensure**:
+**Please ensure:**
 - Code follows existing patterns
 - Security measures are maintained
 - Documentation is updated
 - Changes are tested
+- Model configurations are in YAML files
+
+---
+
+## 🆘 Troubleshooting
+
+### Ollama Connection Error
+
+```bash
+# Ensure Ollama is running
+ollama serve
+
+# Check available models
+ollama list
+
+# Pull missing models
+ollama pull magistral:latest
+```
+
+### Vector Store Issues
+
+```bash
+# Rebuild vector index
+make db
+
+# Check index status
+python core/vector_store.py --status
+```
+
+### GPU Not Detected
+
+Set `use_gpu: false` in `config/settings.yaml`:
+
+```yaml
+vector_store:
+  use_gpu: false
+```
+
+### Import Errors
+
+```bash
+# Reinstall dependencies
+make clean
+make setup
+
+# Activate virtual environment
+source .venv/bin/activate
+```
+
+### Memory Issues
+
+If you encounter memory errors with large datasets:
+
+```yaml
+# Adjust in config/settings.yaml
+vector_store:
+  top_k: 3  # Reduce from 5
+  
+code_execution:
+  max_output_length: 5000  # Reduce from 10000
+```
+
+### Model Not Found
+
+```bash
+# Check configured models
+cat config/agents.yaml
+
+# Pull missing models
+ollama pull gpt-oss:20b
+ollama pull nous-hermes2:34b
+```
+
+---
+
+## 📞 Getting Help
+
+### Debugging Steps
+
+1. **Check logs**: `tail -f logs/hawk_ai.log`
+2. **Validate setup**: `python validate_setup.py`
+3. **Verify Ollama**:
+   ```bash
+   ollama list  # Check available models
+   ollama serve  # Ensure Ollama is running
+   curl http://127.0.0.1:11434/api/tags
+   ```
+4. **Check configuration**: `python main.py --dev`
+5. **Verify data sources**: `ls historical_context/*/`
+6. **Test vector store**: `python core/vector_store.py --status`
+
+### Performance Tips
+
+- **GPU Acceleration**: Set `use_gpu: true` (requires NVIDIA GPU + CUDA)
+- **Model Selection**:
+  - Faster: `qwen2.5:7b`, `mistral:7b`, `llama3:8b`
+  - Balanced: `gpt-oss:20b`, `magistral:latest`
+  - Quality: `nous-hermes2:34b`, `mixtral:8x7b`
+- **Parallel Execution**: Already optimized (ThreadPoolExecutor with 3 workers)
+- **Caching**: Web search results automatically cached in `data/web_cache/`
+
+### Common Issues
+
+**"No module named 'faiss'"**
+```bash
+source .venv/bin/activate
+pip install faiss-gpu-cu12  # or faiss-cpu if no GPU
+```
+
+**"Connection refused" (Ollama)**
+```bash
+ollama serve
+```
+
+**"Vector index not found"**
+```bash
+make db
+```
+
+**"Low confidence results"**
+- Check if Reflection Agent is enabled
+- Review `logs/reflection_agent.log`
+- System automatically re-runs agents if confidence < 0.7
+
+### Need More Help?
+
+- 📖 Check `tests/README.md` for testing documentation
+- 📖 Check `tools/README.md` for reasoning viewer documentation
+- 🐛 Report issues on GitHub with logs from `logs/`
+- 💬 Review detailed error messages in log files
+
+---
 
 ## 📄 License
 
@@ -533,85 +1097,26 @@ This project is for research and educational purposes. See [LICENSE](LICENSE) fo
 
 **Important**: ACLED data is subject to [ACLED Terms of Use](https://acleddata.com/terms-of-use/). If you use HAWK-AI for research, please cite ACLED appropriately.
 
+**Data Source Citations:**
+- **ACLED**: Armed Conflict Location & Event Data Project (www.acleddata.com)
+- **CIA World Factbook**: Central Intelligence Agency (www.cia.gov/the-world-factbook)
+- **Freedom in the World**: Freedom House (freedomhouse.org)
+- **IMF World Economic Outlook**: International Monetary Fund (www.imf.org)
+- **World Bank Indicators**: World Bank Group (data.worldbank.org)
+
+---
+
 ## 🙏 Acknowledgments
 
-- **ACLED** for conflict data
+- **ACLED** for comprehensive conflict data
+- **CIA World Factbook** for country profiles
+- **Freedom House** for democracy indices
+- **IMF** for economic indicators
+- **World Bank** for development data
 - **Ollama** for local model serving
 - **LangChain** for agent framework
 - **FAISS** for vector search
-
-## 🆘 Troubleshooting
-
-### Ollama Connection Error
-```bash
-# Ensure Ollama is running
-ollama serve
-
-# Check available models
-ollama list
-```
-
-### Vector Store Issues
-```bash
-# Rebuild vector index
-make db
-```
-
-### GPU Not Detected
-Set `use_gpu: false` in `config/settings.yaml`
-
-### Import Errors
-```bash
-# Reinstall dependencies
-make clean
-make setup
-```
-
-## 📞 Getting Help
-
-### Debugging Steps
-1. **Check logs**: `tail -f logs/hawk_ai.log`
-2. **Validate setup**: `python validate_setup.py`
-3. **Verify Ollama**: 
-   ```bash
-   ollama list  # Check available models
-   ollama serve  # Ensure Ollama is running
-   ```
-4. **Check configuration**: Review `config/settings.yaml`
-5. **Use dev mode**: `python main.py --dev`
-
-### Common Issues
-
-**"No module named 'faiss'"**
-```bash
-source .venv/bin/activate  # Activate virtual environment
-pip install -r requirements.txt  # Reinstall dependencies
-```
-
-**"Connection refused" (Ollama)**
-```bash
-# Start Ollama service
-ollama serve
-
-# Verify it's running
-curl http://127.0.0.1:11434/api/tags
-```
-
-**"Vector index not found"**
-```bash
-# Rebuild vector database
-make db
-```
-
-### Performance Tips
-- Use GPU acceleration: Set `use_gpu: true` in `config/settings.yaml` (requires NVIDIA GPU)
-- Smaller models for faster inference: `qwen:7b`, `mistral:7b`
-- Larger models for better quality: `magistral:latest`, `llama3:70b`
-
-### Need More Help?
-- 📖 Check `tests/README.md` for testing documentation
-- 🐛 Report issues on GitHub
-- 💬 Review logs in `logs/` directory for detailed error messages
+- **scikit-learn** for clustering algorithms
 
 ---
 
@@ -625,3 +1130,5 @@ If you find HAWK-AI useful, please give it a star! ⭐
 
 *Your intelligence, your data, your machine.*
 
+**Version**: 1.0.0  
+**Last Updated**: October 2025

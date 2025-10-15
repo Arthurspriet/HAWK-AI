@@ -72,5 +72,25 @@
     "rerun": [],
     "summary": "The analysis shows that conflict in Sudan has been concentrated in 19 geographic clusters over the last three years, with high intensities of battles, strategic developments, and violence against civilians. The most severe hotspots are likely where fatalities are elevated, indicating active armed engagements and civilian suffering. These patterns threaten regional stability through potential spillover effects (e.g., refugee flows or cross-border conflicts) and humanitarian crises.",
     "timestamp": "2025-10-15T21:27:56.696095"
+  },
+  {
+    "query": "What's happening in gaza ?",
+    "agents": [
+      "analyst"
+    ],
+    "confidence": 0.75,
+    "rerun": [],
+    "summary": "The provided analysis is consistent and comprehensive in explaining the current situation in Gaza through a multi-layered perspective involving actors, causes, causal relationships, and key takeaways. The various hypotheses offer plausible explanations for the observed patterns in the ACLED, CIA\u2013FATs, and population-exposure data.",
+    "timestamp": "2025-10-15T23:10:55.570056"
+  },
+  {
+    "query": "why norway stand out in the world ?",
+    "agents": [
+      "analyst"
+    ],
+    "confidence": 0.85,
+    "rerun": [],
+    "summary": "The analysis provides comprehensive insights into Norway's historical and contemporary development, tracing its transition from a Viking kingdom to a modern nation-state with defined sovereignty over its mainland and Arctic territories. Key patterns include religious conversion leading to cultural shifts, union politics preserving constitutional continuity, international treaties legitimizing territorial claims, and geological activity influencing environmental awareness. The provided hypotheses offer valuable frameworks for further exploration of these causal relationships within the historical record, treaty texts, and conflict-monitoring data.",
+    "timestamp": "2025-10-15T23:13:15.112821"
   }
 ]
