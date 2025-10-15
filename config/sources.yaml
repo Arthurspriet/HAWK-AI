@@ -1,0 +1,27 @@
+acled:
+  enabled: true
+  path: "historical_context/ACLED"
+  file_pattern: "*.csv"
+  columns:
+    - event_date
+    - country
+    - event_type
+    - sub_event_type
+    - actor1
+    - actor2
+    - fatalities
+    - notes
+    - location
+
+search_sources:
+  duckduckgo:
+    enabled: true
+    region: "wt-wt"
+    safesearch: "moderate"
+    
+web_scraping:
+  timeout: 10
+  max_retries: 3
+  headers:
+    User-Agent: "HAWK-AI/1.0"
+

@@ -1,0 +1,11 @@
+{
+  "query": "Conflict escalation in Sudan since 2022",
+  "historical_count": 3,
+  "web_count": 5,
+  "total_sources": 8,
+  "merged_structure": [
+    "historical_context",
+    "web_context",
+    "metadata"
+  ]
+}

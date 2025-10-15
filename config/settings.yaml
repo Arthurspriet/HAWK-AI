@@ -1,0 +1,40 @@
+ollama:
+  host: "127.0.0.1"
+  port: 11434
+  model_default: "gpt-oss:20b"
+  embed_model: "snowflake-arctic-embed2:568m"
+  timeout: 300
+
+tracking:
+  langsmith_enabled: true
+  project_name: "HAWK-AI-local"
+  api_key: null  # local mode
+  log_dir: "logs"
+
+agents:
+  - search
+  - analyst
+  - redactor
+  - codeexec
+
+vector_store:
+  path: "data/vector_index"
+  use_gpu: true
+  dimension: 768
+  index_type: "flat"
+  top_k: 5
+
+search:
+  max_results: 5
+  timeout: 10
+  user_agent: "HAWK-AI/1.0"
+
+code_execution:
+  timeout: 30
+  max_output_length: 10000
+  allowed_imports: ["numpy", "pandas", "matplotlib", "seaborn", "sklearn", "scipy"]
+
+redaction:
+  max_tokens: 2000
+  style: "professional"
+

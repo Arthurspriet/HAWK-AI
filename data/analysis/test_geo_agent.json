@@ -1,0 +1,9 @@
+{
+  "country": "Sudan",
+  "years_analyzed": 3,
+  "n_events": 6305,
+  "n_clusters": 19,
+  "total_fatalities": 44569,
+  "map_path": "data/maps/Sudan_hotspot.html",
+  "summary": "Analysis based on 6305 events across 19 geographic clusters with 44569 total fatalities. Primary event types: Strategic developments, Violence against civilians, Battles."
+}

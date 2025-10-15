@@ -1,0 +1,3682 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Conflict Hotspots: Sudan (3Y)</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <style>
+            body { margin: 0; padding: 0; }
+            #map { width: 100vw; height: 100vh; }
+            .info { 
+                padding: 10px;
+                font: 14px/16px Arial, sans-serif;
+                background: white;
+                background: rgba(255,255,255,0.9);
+                box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                border-radius: 5px;
+            }
+            .info h4 { margin: 0 0 5px; color: #333; }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script>
+            var map = L.map('map').setView([14.201435654242665, 29.74768478984932], 6);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                maxZoom: 18
+            }).addTo(map);
+            
+            // Add info box
+            var info = L.control({position: 'topright'});
+            info.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this._div.innerHTML = '<h4>Conflict Hotspots: Sudan (3Y)</h4>' +
+                    '<b>Total Events:</b> 6305<br/>' +
+                    '<b>Clusters:</b> 19<br/>' +
+                    '<b>Total Fatalities:</b> 44569';
+                return this._div;
+            };
+            info.addTo(map);
+    
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 8').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.7104, 35.5356], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 44').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.7104, 35.5356], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 40').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 36').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([14.2138, 35.0222], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 193').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 6').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 4').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Riots</b><br/>Fatalities: 4').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.2138, 35.0222], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.0079, 34.0954], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 12').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.7104, 35.5356], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Riots</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 38').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 84').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 67').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 14').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 13').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 34').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 6').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 564').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 14').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.2138, 35.0222], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.2138, 35.0222], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 44').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 13').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 4').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 28').addTo(map);
+        
+            L.circleMarker([11.0079, 34.0954], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 14').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 59').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 24').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 17').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 44').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 70').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 36').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 23').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.0079, 34.0954], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 12').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 6').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 43').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 6').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 30').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 12').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.0079, 34.0954], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 13').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 92').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 100').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 20').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 50').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 16').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 12').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 5').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 15').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.2138, 35.0222], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.2138, 35.0222], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 69').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 82').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 58').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 6').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([11.0079, 34.0954], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.0079, 34.0954], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 30').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 19').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.2138, 35.0222], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 26').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.7104, 35.5356], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 4').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 45').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.7104, 35.5356], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.2138, 35.0222], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 7').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 7').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([15.7104, 35.5356], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.7104, 35.5356], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 14').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 16').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([14.2138, 35.0222], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 23').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.7104, 35.5356], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 50').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 20').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 33').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 13').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 20').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.7104, 35.5356], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 23').addTo(map);
+        
+            L.circleMarker([11.0079, 34.0954], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.7104, 35.5356], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Riots</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 121').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 20').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 5').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 23').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 7').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 21').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 14').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([11.0079, 34.0954], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 27').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 3').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2299, 26.3972], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 16').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 2').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([19.3656, 29.8955], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([20.0739, 35.4126], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Riots</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 8').addTo(map);
+        
+            L.circleMarker([9.7332, 28.4712], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.9093, 34.0815], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 27').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 32').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 11').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 10').addTo(map);
+        
+            L.circleMarker([13.5081, 22.7026], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 7').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.6593, 33.2294], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 4').addTo(map);
+        
+            L.circleMarker([11.8686, 28.2211], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Explosions/Remote violence</b><br/>Fatalities: 1').addTo(map);
+        
+            L.circleMarker([13.5895, 32.3521], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([18.8347, 33.1231], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([11.2289, 30.914], {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 17').addTo(map);
+        
+            L.circleMarker([15.915, 33.1352], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 4').addTo(map);
+        
+            L.circleMarker([15.8601, 25.5013], {
+                color: 'orange',
+                fillColor: 'orange',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Battles</b><br/>Fatalities: 4').addTo(map);
+        
+            L.circleMarker([11.0079, 34.0954], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Protests</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([14.3894, 29.437], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([12.3084, 23.2341], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Violence against civilians</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circleMarker([10.9002, 24.3019], {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 5
+            }).bindPopup('<b>Strategic developments</b><br/>Fatalities: 0').addTo(map);
+        
+            L.circle([9.7332, 28.471199999999996], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 0.0</b><br/>Events: 233.0<br/>Fatalities: 596.0').addTo(map);
+        
+            L.circle([14.6593, 33.2294], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 1.0</b><br/>Events: 2003.0<br/>Fatalities: 4377.0').addTo(map);
+        
+            L.circle([11.0079, 34.0954], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 2.0</b><br/>Events: 170.0<br/>Fatalities: 360.0').addTo(map);
+        
+            L.circle([12.3084, 23.2341], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 3.0</b><br/>Events: 417.0<br/>Fatalities: 667.0').addTo(map);
+        
+            L.circle([11.2299, 26.3972], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 4.0</b><br/>Events: 235.0<br/>Fatalities: 185.0').addTo(map);
+        
+            L.circle([14.2138, 35.0222], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 5.0</b><br/>Events: 197.0<br/>Fatalities: 90.0').addTo(map);
+        
+            L.circle([15.7104, 35.5356], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 6.0</b><br/>Events: 141.0<br/>Fatalities: 7.0').addTo(map);
+        
+            L.circle([15.915000000000001, 33.1352], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 7.0</b><br/>Events: 6873.0<br/>Fatalities: 10749.0').addTo(map);
+        
+            L.circle([15.860099999999997, 25.5013], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 8.0</b><br/>Events: 2216.0<br/>Fatalities: 11018.0').addTo(map);
+        
+            L.circle([14.3894, 29.437], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 9.0</b><br/>Events: 904.0<br/>Fatalities: 2945.0').addTo(map);
+        
+            L.circle([19.3656, 29.895499999999995], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 10.0</b><br/>Events: 226.0<br/>Fatalities: 98.0').addTo(map);
+        
+            L.circle([20.0739, 35.4126], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 11.0</b><br/>Events: 258.0<br/>Fatalities: 12.0').addTo(map);
+        
+            L.circle([18.8347, 33.1231], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 12.0</b><br/>Events: 240.0<br/>Fatalities: 133.0').addTo(map);
+        
+            L.circle([12.9093, 34.0815], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 13.0</b><br/>Events: 441.0<br/>Fatalities: 873.0').addTo(map);
+        
+            L.circle([10.9002, 24.3019], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 14.0</b><br/>Events: 953.0<br/>Fatalities: 2537.0').addTo(map);
+        
+            L.circle([11.2289, 30.913999999999998], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 15.0</b><br/>Events: 577.0<br/>Fatalities: 1812.0').addTo(map);
+        
+            L.circle([13.5081, 22.7026], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 16.0</b><br/>Events: 510.0<br/>Fatalities: 5149.0').addTo(map);
+        
+            L.circle([11.8686, 28.2211], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 17.0</b><br/>Events: 578.0<br/>Fatalities: 2276.0').addTo(map);
+        
+            L.circle([13.5895, 32.3521], {
+                color: 'darkred',
+                fillColor: '#ff0000',
+                fillOpacity: 0.3,
+                radius: 20000
+            }).bindPopup('<b>Cluster 18.0</b><br/>Events: 419.0<br/>Fatalities: 685.0').addTo(map);
+        
+        </script>
+    </body>
+    </html>
+    

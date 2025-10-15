@@ -1,0 +1,116 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                    HAWK-AI WEB SEARCH - QUICK REFERENCE                        ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+📦 FILES CREATED
+────────────────────────────────────────────────────────────────────────────────
+  ✅ core/tools_websearch.py (13KB)         - Main module
+  ✅ core/tools_websearch_example.py (3KB)  - Usage examples
+  ✅ core/WEBSEARCH_README.md (7.5KB)       - Full documentation
+  ✅ WEBSEARCH_IMPLEMENTATION.md (11KB)     - Implementation summary
+
+🚀 QUICK START
+────────────────────────────────────────────────────────────────────────────────
+  CLI:
+    $ source .venv/bin/activate
+    $ python core/tools_websearch.py "your search query"
+
+  Python:
+    from core.tools_websearch import smart_search, find_most_relevant
+    
+    results = smart_search("AI research", max_results=10)
+    top_3 = find_most_relevant("AI research", results, top_k=3)
+
+🔧 KEY FUNCTIONS
+────────────────────────────────────────────────────────────────────────────────
+  smart_search(query, max_results=20)
+    → Search DuckDuckGo, return [{title, body, href}]
+    → Auto-caches to data/web_cache/
+  
+  vectorize_results(results, query=None, index_name="web_index")
+    → Create FAISS index with Ollama embeddings
+    → Saves to data/vector_index/
+  
+  find_most_relevant(query, results, top_k=3)
+    → Semantic ranking using embeddings
+    → Returns top-k most relevant results
+  
+  load_vector_index(index_name)
+    → Load saved FAISS index + metadata
+
+📁 DATA LOCATIONS
+────────────────────────────────────────────────────────────────────────────────
+  Cache:   data/web_cache/*.pkl
+  Vectors: data/vector_index/web_index.faiss
+  Logs:    logs/websearch.log
+
+⚙️ CONFIGURATION
+────────────────────────────────────────────────────────────────────────────────
+  Embedding Model: snowflake-arctic-embed2:568m
+  Ollama URL:      http://127.0.0.1:11434
+  Vector Dim:      1024
+  Index Type:      FAISS IndexFlatL2
+
+📚 DOCUMENTATION
+────────────────────────────────────────────────────────────────────────────────
+  Full docs:    core/WEBSEARCH_README.md
+  Examples:     core/tools_websearch_example.py
+  Summary:      WEBSEARCH_IMPLEMENTATION.md
+
+✅ FEATURES
+────────────────────────────────────────────────────────────────────────────────
+  ✓ DuckDuckGo search with caching
+  ✓ FAISS vectorization via Ollama
+  ✓ Semantic relevance ranking
+  ✓ CLI test interface
+  ✓ Comprehensive logging
+  ✓ Full docstrings & type hints
+
+🎯 EXAMPLE OUTPUT
+────────────────────────────────────────────────────────────────────────────────
+  $ python core/tools_websearch.py "climate change impacts"
+  
+  ════════════════════════════════════════════════════════════════════════════
+  HAWK-AI Web Search: climate change impacts
+  ════════════════════════════════════════════════════════════════════════════
+  
+  🔍 Searching DuckDuckGo...
+  ✅ Found 15 results
+  
+  ⭐ Top 3 Most Relevant Results:
+  1. [Title] - [URL]
+  2. [Title] - [URL]
+  3. [Title] - [URL]
+  
+  💾 Saved 15 vectors to data/vector_index/web_index.faiss
+  ✅ Search complete!
+
+💡 TIPS
+────────────────────────────────────────────────────────────────────────────────
+  • First search: ~3-5s (network)
+  • Cached search: <0.1s (instant)
+  • Results auto-cached by query+max_results hash
+  • Use use_cache=False to force fresh search
+  • Check logs/websearch.log for debugging
+
+🔗 INTEGRATION
+────────────────────────────────────────────────────────────────────────────────
+  # In your HAWK-AI agent
+  from core.tools_websearch import smart_search, find_most_relevant
+  
+  def search_tool(query: str) -> str:
+      results = smart_search(query, max_results=10)
+      return find_most_relevant(query, results, top_k=3)
+
+📊 TESTING
+────────────────────────────────────────────────────────────────────────────────
+  ✅ Search: Working
+  ✅ Cache:  Working (3.3KB cached)
+  ✅ FAISS:  Working (41KB index, 1024 dims)
+  ✅ Logs:   Working (6.2KB log file)
+  ✅ CLI:    Working (full output)
+
+════════════════════════════════════════════════════════════════════════════════
+Ready to use! 🚀
+════════════════════════════════════════════════════════════════════════════════
+

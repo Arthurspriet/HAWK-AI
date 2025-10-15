@@ -1,0 +1,15 @@
+{
+  "query": "Conflict escalation in Sudan 2022\u20132025",
+  "analyst": {
+    "historical_sources": 5,
+    "web_sources": 10,
+    "analysis_length": 6990
+  },
+  "geo": {
+    "country": "Sudan",
+    "n_events": 6305,
+    "n_clusters": 19,
+    "map_path": "data/maps/Sudan_hotspot.html"
+  },
+  "integration_status": "success"
+}
