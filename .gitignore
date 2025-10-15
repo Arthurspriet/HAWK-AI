@@ -46,6 +46,10 @@ data/web_cache/*.pkl
 data/maps/*.html
 *.tmp
 
+# Large data files
+historical_context/WIKI/
+*.gz
+
 # Keep directory structure
 !logs/.gitkeep
 !data/vector_index/.gitkeep
