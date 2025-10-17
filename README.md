@@ -43,6 +43,14 @@ A fully local, privacy-focused multi-agent OSINT (Open-Source Intelligence) anal
 - **💻 Sandboxed Code Execution**: Safe Python execution for data manipulation and visualization
 - **🧩 Meta-Cognitive Reflection**: Self-evaluation, consistency checking, and adaptive re-execution
 
+### Web Interface & API
+- **🌐 REST API Server**: FastAPI-based API with OpenAI-compatible endpoints
+- **💬 Open WebUI Integration**: Beautiful web chat interface with real-time streaming
+- **🔄 Streaming Responses**: Server-Sent Events (SSE) for progressive output and agent progress updates
+- **📡 OpenAI-Compatible**: Drop-in replacement for OpenAI API endpoints (`/v1/chat/completions`)
+- **🎨 Real-Time Agent Transparency**: See which agents are working and their contributions in real-time
+- **🔌 Easy Integration**: Standard REST API for integration with any frontend or application
+
 ### Advanced Analytical Features
 - **🎯 Structured Reasoning Framework**: Pattern extraction → Hypothesis generation → Evaluation → Synthesis → Critical review
 - **📐 Military Intelligence Frameworks**: PMESII, DIME, and SWOT framework integration
@@ -64,22 +72,24 @@ A fully local, privacy-focused multi-agent OSINT (Open-Source Intelligence) anal
 ```
 HAWK-AI/
 ├── main.py                      # Main entry point with CLI/interactive modes
+├── api_server.py               # FastAPI REST API server with streaming
 ├── config/
 │   ├── agents.yaml             # Agent model assignments & thinking modes
 │   ├── settings.yaml           # System configuration (Ollama, FAISS, etc.)
 │   └── sources.yaml            # Data source configuration
 ├── core/                       # Core system components
-│   ├── orchestrator.py         # Task orchestration & routing
+│   ├── orchestrator.py         # Task orchestration & routing (streaming support)
 │   ├── agent_registry.py       # Agent management system
 │   ├── vector_store.py         # FAISS vector database (5 sources)
 │   ├── context_fusion.py       # Multi-source weighted fusion
 │   ├── context_orchestrator.py # Automatic source/framework selection
 │   ├── memory_manager.py       # Persistent inter-agent memory
 │   ├── analytical_frameworks.py # PMESII, DIME, SWOT frameworks
+│   ├── streaming_formatter.py  # SSE formatting for streaming responses
 │   ├── config_loader.py        # Configuration management
 │   └── tools_*.py              # Specialized tool implementations
 ├── agents/                     # Specialized agent implementations
-│   ├── supervisor_agent.py     # Central coordinator (parallel execution)
+│   ├── supervisor_agent.py     # Central coordinator (parallel execution + progress callbacks)
 │   ├── analyst_agent.py        # Structured reasoning & analysis
 │   ├── search_agent.py         # Web intelligence gathering
 │   ├── geo_agent.py            # Geospatial analysis & clustering
@@ -98,6 +108,11 @@ HAWK-AI/
 │   ├── FREEDOM_WORLD/          # Democracy & freedom indices
 │   ├── IMF/                    # Economic indicators & forecasts
 │   └── WBI/                    # World Bank socio-economic data
+├── open-webui/                 # Integrated web chat interface (git submodule)
+├── script/                     # Service management scripts
+│   ├── start_hawk.sh           # Start all services
+│   ├── stop_hawk.sh            # Stop all services
+│   └── test_integration.sh     # Test web integration
 └── tools/                      # Analysis & visualization tools
     ├── reasoning_viewer.py     # CLI/Streamlit reasoning visualization
     └── save_reasoning_example.py
@@ -144,7 +159,9 @@ User Response + Artifacts (maps, reports, reasoning chains)
 
 ## ⚡ Quick Start
 
-Get HAWK-AI running in 3 steps:
+### Option 1: Web Interface (Recommended)
+
+Get HAWK-AI with web chat interface running in 4 steps:
 
 ```bash
 # 1. Install dependencies
@@ -153,8 +170,36 @@ make setup
 # 2. Build vector database (one-time, ~10-15 minutes for all sources)
 make db
 
-# 3. Start analyzing!
+# 3. Start all services (API + Open WebUI)
+make hawk
+
+# 4. Open browser to http://localhost:5173
+```
+
+### Option 2: CLI Mode
+
+For command-line usage:
+
+```bash
+# 1. Install dependencies
+make setup
+
+# 2. Build vector database
+make db
+
+# 3. Start interactive CLI
 make run
+```
+
+### Option 3: API Server Only
+
+To use the REST API for custom integration:
+
+```bash
+# Start API server with auto-reload
+make api
+
+# API docs available at: http://127.0.0.1:8000/docs
 ```
 
 ---
@@ -213,7 +258,83 @@ make run
 
 ## 🚀 Usage
 
-### Interactive Mode (Default)
+### Web Interface (Recommended)
+
+Start the complete web interface with streaming chat:
+
+```bash
+# Start all services (API + Open WebUI)
+make hawk
+
+# Or manually:
+# Terminal 1: Start API server
+make api
+
+# Terminal 2: Start Open WebUI (if integrated)
+cd open-webui && npm run dev
+```
+
+Access the interface at: **http://localhost:5173**
+
+**Features:**
+- 💬 Real-time streaming chat interface
+- 🎨 Beautiful, modern UI with dark mode
+- 📊 Agent transparency (see which agents are working)
+- 🗺️ Interactive maps and visualizations
+- 📁 File upload support (documents, data)
+- 💾 Persistent chat history
+- 🔄 Progressive streaming responses
+
+**Stop all services:**
+```bash
+make stop
+```
+
+### REST API Mode
+
+Use the API for custom integrations:
+
+```bash
+# Start API server
+make api
+
+# Access API documentation
+# http://127.0.0.1:8000/docs (Swagger UI)
+# http://127.0.0.1:8000/redoc (ReDoc)
+```
+
+**API Endpoints:**
+- `POST /chat` - Send query to HAWK-AI (with streaming support)
+- `POST /v1/chat/completions` - OpenAI-compatible endpoint
+- `GET /v1/models` - List available HAWK-AI agents
+- `GET /status` - System status
+- `GET /health` - Health check
+- `GET /history` - Session history
+
+**Example API call with streaming:**
+```bash
+curl -N -X POST http://127.0.0.1:8000/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "Analyze tensions in Sudan",
+    "stream": true
+  }'
+```
+
+**Example OpenAI-compatible call:**
+```bash
+curl -N -X POST http://127.0.0.1:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [{"role": "user", "content": "Analyze tensions in Sudan"}],
+    "model": "hawk-ai-supervisor",
+    "stream": true
+  }'
+```
+
+### Interactive CLI Mode
+
+Traditional command-line interface:
 
 ```bash
 python main.py --chat
@@ -628,6 +749,35 @@ See `tools/README.md` for detailed reasoning viewer documentation.
 
 ## 🔧 Configuration
 
+### Available Commands
+
+HAWK-AI includes convenient `make` commands for all operations:
+
+**Setup & Database:**
+- `make setup` - Install dependencies in virtual environment
+- `make db` - Build all vector indexes (~10-15 min)
+- `make db-acled` - Build ACLED index only
+- `make db-cia` - Build CIA World Factbook index
+- `make db-wbi` - Build World Bank indicators index
+
+**Running Services:**
+- `make hawk` - Start all services (API + Open WebUI)
+- `make stop` - Stop all services
+- `make api` - Start API server with auto-reload (dev)
+- `make api-prod` - Start API server in production mode
+- `make run` - Start CLI interactive mode
+- `make dev` - Start development mode with diagnostics
+
+**Analysis & Tools:**
+- `make examples` - Run all capability demonstrations
+- `make examples-list` - List available examples
+- `make reasoning` - View reasoning chains (CLI)
+- `make reasoning-ui` - View reasoning chains (Streamlit web UI)
+
+**Maintenance:**
+- `make test` - Run test suite
+- `make clean` - Clean virtual environment and cache
+
 ### `config/agents.yaml`
 
 Agent model assignments and thinking modes:
@@ -867,7 +1017,7 @@ See `requirements.txt` for full dependencies:
 - `crewai[tools]` - Agent framework
 - `langgraph` - Agent orchestration
 - `langchain-ollama` - Ollama integration
-- `faiss-gpu-cu12` - GPU-accelerated vector database
+- `faiss-gpu` - GPU-accelerated vector database
 - `sentence-transformers` - Embedding generation
 - `duckduckgo-search` - Web search
 - `pandas`, `numpy` - Data processing
@@ -877,9 +1027,11 @@ See `requirements.txt` for full dependencies:
 - `pyyaml` - Configuration management
 - `tqdm` - Progress bars
 
-**Optional:**
-- `streamlit` - Web UI for reasoning viewer
-- `plotly` - Interactive visualizations
+**API & Web Interface:**
+- `fastapi` - REST API framework
+- `uvicorn[standard]` - ASGI server with auto-reload
+- `pydantic` - Data validation and serialization
+- `streamlit` - Web UI for reasoning viewer (optional)
 
 ---
 
@@ -1082,12 +1234,55 @@ make db
 - Review `logs/reflection_agent.log`
 - System automatically re-runs agents if confidence < 0.7
 
+### API & Web Interface Issues
+
+**"API server not starting"**
+```bash
+# Check if port 8000 is in use
+lsof -i :8000
+# Kill process if needed
+kill -9 <PID>
+# Restart API
+make api
+```
+
+**"Open WebUI connection refused"**
+```bash
+# Verify API server is running
+curl http://127.0.0.1:8000/health
+# Should return: {"status": "healthy"}
+
+# Check CORS settings in api_server.py
+# Ensure Open WebUI port is allowed
+```
+
+**"Streaming not working"**
+```bash
+# Test streaming with curl
+curl -N -X POST http://127.0.0.1:8000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"query": "Test", "stream": true}'
+```
+
+**"Services won't stop"**
+```bash
+# Force stop all services
+make stop
+# Or manually:
+pkill -f "api_server.py"
+pkill -f "main.py"
+```
+
 ### Need More Help?
 
+- 📖 Check `OPENWEBUI_INTEGRATION.md` for web interface setup
+- 📖 Check `QUICK_START_INTEGRATION.md` for quick start guide
+- 📖 Check `STREAMING_SETUP.md` for streaming configuration
 - 📖 Check `tests/README.md` for testing documentation
 - 📖 Check `tools/README.md` for reasoning viewer documentation
 - 🐛 Report issues on GitHub with logs from `logs/`
 - 💬 Review detailed error messages in log files
+- 🌐 API docs available at http://127.0.0.1:8000/docs when running
 
 ---
 
@@ -1130,5 +1325,96 @@ If you find HAWK-AI useful, please give it a star! ⭐
 
 *Your intelligence, your data, your machine.*
 
-**Version**: 1.0.0  
-**Last Updated**: October 2025
+---
+
+## 🚀 Deployment & Integration
+
+### Deployment Options
+
+**1. Local Development**
+```bash
+make hawk  # Start all services locally
+```
+
+**2. Production Deployment**
+```bash
+# API only (for backend integration)
+make api-prod
+
+# Or with docker-compose (if using Open WebUI's docker setup)
+cd open-webui && docker-compose up -d
+```
+
+**3. Cloud Deployment**
+- Deploy `api_server.py` to any Python-compatible cloud platform
+- Ensure Ollama is accessible (local or remote endpoint)
+- Configure CORS for your frontend domain
+- Set environment variables in production
+
+### Integration Guides
+
+HAWK-AI provides multiple integration points:
+
+- 📖 **[OPENWEBUI_INTEGRATION.md](OPENWEBUI_INTEGRATION.md)** - Complete Open WebUI integration guide
+- 📖 **[QUICK_START_INTEGRATION.md](QUICK_START_INTEGRATION.md)** - Quick start for web interface
+- 📖 **[STREAMING_SETUP.md](STREAMING_SETUP.md)** - Streaming configuration and testing
+- 📖 **[REORGANIZATION_SUMMARY.md](REORGANIZATION_SUMMARY.md)** - Project structure overview
+
+### API Integration
+
+Use HAWK-AI as a drop-in replacement for OpenAI API:
+
+```python
+import openai
+
+# Point to HAWK-AI server
+openai.api_base = "http://127.0.0.1:8000/v1"
+openai.api_key = "not-needed"  # API key not required for local
+
+# Use standard OpenAI client
+response = openai.ChatCompletion.create(
+    model="hawk-ai-supervisor",
+    messages=[
+        {"role": "user", "content": "Analyze tensions in Sudan"}
+    ],
+    stream=True
+)
+
+for chunk in response:
+    print(chunk.choices[0].delta.content, end="")
+```
+
+---
+
+## 📊 System Requirements
+
+### Minimum
+- **CPU**: 4 cores
+- **RAM**: 8GB
+- **Storage**: 10GB (with vector indexes)
+- **GPU**: Optional (CPU-only mode supported)
+
+### Recommended
+- **CPU**: 8+ cores
+- **RAM**: 16GB+
+- **Storage**: 20GB+ SSD
+- **GPU**: NVIDIA GPU with 8GB+ VRAM (for faster inference)
+
+### Performance Tips
+- Enable GPU acceleration: `use_gpu: true` in `config/settings.yaml`
+- Use SSD for vector indexes
+- Run Ollama with GPU support
+- Adjust `top_k` and model size based on available resources
+
+---
+
+**Version**: 2.0.0  
+**Last Updated**: October 17, 2025
+
+**Major Updates in 2.0:**
+- ✨ REST API server with FastAPI
+- 💬 Open WebUI integration
+- 🔄 Streaming chat support
+- 📡 OpenAI-compatible endpoints
+- 🎨 Real-time agent transparency
+- 🚀 Production-ready deployment options

@@ -107,7 +107,7 @@ class LocalTracker:
     def get_session_summary(self) -> Dict[str, Any]:
         """Get summary of current session."""
         if not self.session_log_path.exists():
-            return {"session_id": self.session_id, "events": 0}
+            return {"session_id": self.session_id, "total_events": 0}
         
         events = []
         with open(self.session_log_path, 'r') as f:
@@ -143,4 +143,5 @@ def get_tracker(config_path: str = "config/settings.yaml") -> LocalTracker:
     if _tracker is None:
         _tracker = LocalTracker(config_path)
     return _tracker
+
 

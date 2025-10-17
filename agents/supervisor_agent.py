@@ -217,7 +217,7 @@ class SupervisorAgent:
         # Default fallback
         return "Sudan"
     
-    def run(self, query: str) -> Dict[str, Any]:
+    def run(self, query: str, progress_callback=None) -> Dict[str, Any]:
         """
         Execute the supervisor workflow.
         
@@ -230,6 +230,8 @@ class SupervisorAgent:
         
         Args:
             query: User query
+            progress_callback: Optional callback function for progress updates
+                              Called with (event_type: str, data: dict)
             
         Returns:
             Complete report dictionary
@@ -248,7 +250,7 @@ class SupervisorAgent:
         
         # Execute agents in parallel
         print(f"🕵️  Running {len(agents_to_use)} agent(s) in parallel...\n")
-        results = self._execute_agents_parallel(query, agents_to_use)
+        results = self._execute_agents_parallel(query, agents_to_use, progress_callback)
         
         # Extract fusion details from AnalystAgent results
         if "analyst" in results:
@@ -299,10 +301,14 @@ class SupervisorAgent:
         
         # Synthesize results
         print("🧠 Synthesizing results with LLM...\n")
+        if progress_callback:
+            progress_callback("synthesis_start", {"query": query})
         synth_start = time.time()
         synthesis = self._synthesize_results(query, results)
         synth_duration = round(time.time() - synth_start, 2)
         self.logger.info(f"SupervisorAgent synthesis finished in {synth_duration}s using {self.model}")
+        if progress_callback:
+            progress_callback("synthesis_complete", {"duration": synth_duration})
         
         # Create final report
         timestamp = start_time.isoformat()
@@ -345,13 +351,14 @@ class SupervisorAgent:
         
         return report
     
-    def _execute_agents_parallel(self, query: str, agents: List[str]) -> Dict[str, Any]:
+    def _execute_agents_parallel(self, query: str, agents: List[str], progress_callback=None) -> Dict[str, Any]:
         """
         Execute multiple agents in parallel using ThreadPoolExecutor.
         
         Args:
             query: User query
             agents: List of agent names to execute
+            progress_callback: Optional callback for progress updates
             
         Returns:
             Dictionary of agent results
@@ -363,14 +370,20 @@ class SupervisorAgent:
             
             # Submit tasks
             if "search" in agents and self.search_agent:
+                if progress_callback:
+                    progress_callback("agent_start", {"agent": "search"})
                 future = executor.submit(self._run_search_agent, query)
                 futures[future] = "search"
             
             if "analyst" in agents and self.analyst_agent:
+                if progress_callback:
+                    progress_callback("agent_start", {"agent": "analyst"})
                 future = executor.submit(self._run_analyst_agent, query)
                 futures[future] = "analyst"
             
             if "geo" in agents and self.geo_agent:
+                if progress_callback:
+                    progress_callback("agent_start", {"agent": "geo"})
                 country = self._extract_country_from_query(query)
                 future = executor.submit(self._run_geo_agent, country)
                 futures[future] = "geo"
@@ -383,11 +396,15 @@ class SupervisorAgent:
                     results[agent_name] = result
                     print(f"✓ {agent_name.capitalize()}Agent completed")
                     self.logger.info(f"{agent_name.capitalize()}Agent completed successfully")
+                    if progress_callback:
+                        progress_callback("agent_complete", {"agent": agent_name, "status": "success"})
                 except Exception as e:
                     error_msg = f"Error in {agent_name}Agent: {str(e)}"
                     results[agent_name] = {"error": error_msg}
                     print(f"✗ {agent_name.capitalize()}Agent failed: {e}")
                     self.logger.error(error_msg, exc_info=True)
+                    if progress_callback:
+                        progress_callback("agent_complete", {"agent": agent_name, "status": "error", "error": str(e)})
         
         return results
     

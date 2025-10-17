@@ -1,4 +1,4 @@
-.PHONY: setup dev db db-acled db-cia db-wbi run clean test reasoning reasoning-ui examples examples-list
+.PHONY: setup dev db db-acled db-cia db-wbi run api clean test reasoning reasoning-ui examples examples-list hawk stop
 
 setup:
 	python3 -m venv .venv
@@ -22,6 +22,12 @@ db-wbi:
 run:
 	. .venv/bin/activate && python main.py
 
+api:
+	. .venv/bin/activate && python api_server.py --reload
+
+api-prod:
+	. .venv/bin/activate && python api_server.py --host 0.0.0.0 --port 8000
+
 examples:
 	. .venv/bin/activate && python examples_showcase.py
 
@@ -43,3 +49,9 @@ clean:
 
 test:
 	. .venv/bin/activate && python -m pytest tests/ -v
+
+hawk:
+	./script/start_hawk.sh
+
+stop:
+	./script/stop_hawk.sh

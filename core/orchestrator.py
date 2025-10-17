@@ -134,6 +134,86 @@ class Orchestrator:
             console.print(f"[red]Error retrieving context: {e}[/red]")
             return []
     
+    def execute_task_streaming(self, query: str, progress_callback=None, context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """
+        Execute a task through the agent system with streaming support.
+        
+        Args:
+            query: User query
+            progress_callback: Optional callback for progress updates
+            context: Optional additional context
+            
+        Returns:
+            Dictionary with execution results
+        """
+        start_time = datetime.now()
+        
+        console.print(Panel.fit(
+            f"[bold]Task:[/bold] {query}",
+            title="HAWK-AI Processing (Streaming)",
+            border_style="cyan"
+        ))
+        
+        # Track task start
+        self.tracker.log_event("task_start", {"query": query, "streaming": True})
+        
+        try:
+            # Classify task
+            task_type = self.classify_task(query)
+            console.print(f"[cyan]Task type: {task_type}[/cyan]")
+            
+            # Retrieve historical context if relevant
+            historical_context = []
+            if task_type in [TaskType.ANALYSIS, TaskType.GENERAL_QUERY]:
+                historical_context = self.retrieve_context(query)
+            
+            # Select agents
+            selected_agents = self.select_agents(task_type, query)
+            console.print(f"[cyan]Selected agents: {[a.value for a in selected_agents]}[/cyan]")
+            
+            # Execute with supervisor
+            supervisor = self.registry.get_agent(AgentType.SUPERVISOR)
+            
+            if supervisor:
+                result = supervisor.run(query=query, progress_callback=progress_callback)
+            else:
+                # Fallback to direct execution
+                result = self._direct_execution(query, task_type, historical_context)
+            
+            # Calculate duration
+            duration = (datetime.now() - start_time).total_seconds()
+            
+            # Track task completion
+            self.tracker.log_event("task_complete", {
+                "query": query,
+                "task_type": task_type,
+                "duration": duration,
+                "agents_used": [a.value for a in selected_agents],
+                "streaming": True
+            })
+            
+            console.print(f"\n[green]✓ Task completed in {duration:.2f}s[/green]")
+            
+            return {
+                "status": "success",
+                "query": query,
+                "task_type": task_type,
+                "result": result,
+                "duration": duration,
+                "agents_used": [a.value for a in selected_agents]
+            }
+            
+        except Exception as e:
+            console.print(f"[red]Error executing task: {e}[/red]")
+            self.tracker.log_error("orchestrator", e)
+            
+            return {
+                "status": "error",
+                "query": query,
+                "error": str(e),
+                "duration": (datetime.now() - start_time).total_seconds()
+            }
+    
     def execute_task(self, query: str, context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Execute a task through the agent system.
